@@ -49,7 +49,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
 .top nav a:hover{color:var(--ink)}
 
 /* the set */
-.stage{position:relative;height:430vh;background:
+.stage{position:relative;height:380vh;background:
   radial-gradient(120% 80% at 50% 38%, var(--cyc) 0%, var(--cyc) 45%, var(--cyc-2) 100%)}
 .set{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 #gl{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -81,7 +81,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
 .credits{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:0}
 .credits li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .credits li span:last-child{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);align-self:center}
-.c4{left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom,0px));text-align:center;max-width:none}
+.c4{left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom,0px));text-align:center;max-width:none;z-index:3}
 .c4 h2{color:var(--room-ink)}
 .c4 .mono{color:var(--room-2)}
 .hint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);color:var(--ink-2)}
@@ -658,7 +658,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
     if(Math.abs(cur-last)>.0004){
       caps.forEach(function(c){var r=c.r,op=c.r[0]===0&&c.r[1]===0?1-sm(r[2],r[3],cur):sm(r[0],r[1],cur)*(1-sm(r[2],r[3],cur));
         c.el.style.opacity=op.toFixed(3); c.el.style.transform='translateY('+((1-op)*14).toFixed(1)+'px)'; c.el.style.visibility=op<.01?'hidden':'visible';});
-      fadeEl.style.opacity=sm(.9,1,cur).toFixed(3);
+      fadeEl.style.opacity=(.78*sm(.9,1,cur)).toFixed(3);
       var f=Math.round(cur*24*24), s=Math.floor(f/24);
       tcEl.textContent='TC 00:00:'+String(s).padStart(2,'0')+':'+String(f%24).padStart(2,'0');
       last=cur;
