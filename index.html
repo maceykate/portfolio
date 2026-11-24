@@ -118,29 +118,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
 .marq .tm.wide{letter-spacing:.32em;font-weight:900}
 @keyframes marq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marq{-webkit-mask-image:none;mask-image:none}.marq .track{animation:none;flex-wrap:wrap;width:auto;gap:18px 0}.marq li[aria-hidden]{display:none}}
-.cur{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--room-line)}
+.cur{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--room-line)}
 .cur-card{position:relative;border:1px solid var(--room-line);padding:24px 24px 26px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
-.cur-card h3{margin:14px 0 6px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.4vw,56px);line-height:.92;color:var(--room-ink)}
+.cur-card h3{margin:14px 0 6px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(32px,3.3vw,46px);line-height:.92;color:var(--room-ink);text-wrap:balance}
 .cur-role{margin:0 0 12px;color:var(--room-ink);font-weight:500;font-size:17px}
-.cur-role .mono{color:#E08A3C;font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.cur-role .mono{display:block;margin-top:6px;color:#E08A3C;font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .cur-card p:not(.cur-role){margin:0;color:var(--room-2);max-width:52ch}
 .cur-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--room-2)}
 .cur-tag i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.18)}
 .cur-more{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E08A3C;text-decoration:none}
 .cur-more:hover{text-decoration:underline}
-@media (max-width:720px){.cur{grid-template-columns:minmax(0,1fr)}.cur-role .mono{display:block;margin-top:6px}}
+.cur-card{display:flex;flex-direction:column}.cur-more{margin-top:auto;padding-top:16px;align-self:flex-start}
+@media (max-width:1040px){.cur{grid-template-columns:repeat(2,minmax(0,1fr))}.cur-card:last-child{grid-column:1 / -1}}
+@media (max-width:720px){.cur{grid-template-columns:minmax(0,1fr)}.cur-card:last-child{grid-column:auto}}
 
-.studio{background:#070708;color:#f2f2ef;border-top:1px solid #2a2a2b;border-bottom:1px solid #2a2a2b}
-.studio .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:center;padding-block:44px}
-.studio-logo{text-decoration:none;display:inline-flex;flex-direction:column;gap:4px}
-.studio-logo img{display:block;width:min(340px,80vw);height:auto;filter:invert(1) contrast(1.8);mix-blend-mode:screen}
 .wm{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(44px,6vw,80px);line-height:.85;color:var(--room-ink)}
 .wm i{font-style:normal;color:#7FD3FF}
 .wm-sub{color:var(--room-2);letter-spacing:.42em}
-.studio-copy p{margin:0 0 12px;color:#9a9a96;max-width:56ch}
-.studio-link{text-decoration:none;color:#f2f2ef;border-bottom:1px solid #f2f2ef;padding-bottom:2px}
-.studio-link:hover{text-decoration:underline}
-@media (max-width:760px){.studio .wrap{grid-template-columns:minmax(0,1fr);gap:18px}}
 /* work */
 .work .wrap{padding-block:88px}
 .sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;margin-bottom:28px}
@@ -285,8 +279,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
       <div class="cur">
         <article class="cur-card">
           <span class="cur-tag mono"><i></i>Active &middot; Account team</span>
-          <h3>The Agency</h3>
-          <p class="cur-role">Disney Advertising account <span class="mono">&middot; Disney Generation Stream</span></p>
+          <h3>Disney Generation Stream</h3>
+          <p class="cur-role">The Agency <span class="mono">Disney Advertising account</span></p>
           <p>A full-service creative solutions firm that connects students with real clients and real work. I&rsquo;m bringing my production experience to the team and diving into advertising.</p>
         </article>
         <article class="cur-card">
@@ -296,6 +290,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
           <p>Data analytics &amp; visualization for people analytics. Live sessions start Dec 7, 2026 &middot; 8 weeks.</p>
           <a class="cur-more mono" href="#now">The project &darr;</a>
         </article>
+        <article class="cur-card">
+          <span class="cur-tag mono"><i></i>Active &middot; Founder</span>
+          <h3>FILMAVATION</h3>
+          <p class="cur-role">FILMAVATION Studios <span class="mono">Orlando &middot; Since 2022</span></p>
+          <p>The studio behind most of this work: film plus innovation, from LED-wall virtual production to cinema glass on every job. We&rsquo;ve just hit 200 paid projects.</p>
+          <a class="cur-more mono" href="filmavation.html">What is FILMAVATION &rarr;</a>
+        </article>
       </div>
       <span class="eyebrow mono">Work featured in</span>
       <div class="marq rev"><ul class="track"><li><img src="thumbs/logo-nyt.svg" alt="The New York Times" style="--h:.95"></li><li><a href="https://www.washingtonpost.com/lifestyle/2022/04/04/florida-teen-stonewall-riots-history-lesson/" target="_blank" rel="noopener"><img src="thumbs/logo-wapo.svg" alt="The Washington Post" style="--h:0.95"></a></li><li><img src="thumbs/logo-teenvogue.svg" alt="Teen Vogue" style="--h:1.5"></li><li><img src="thumbs/logo-cnn.svg" alt="CNN" style="--h:1.3"></li><li aria-hidden="true"><img src="thumbs/logo-nyt.svg" alt="The New York Times" style="--h:1.05"></li><li aria-hidden="true"><a tabindex="-1" href="https://www.washingtonpost.com/lifestyle/2022/04/04/florida-teen-stonewall-riots-history-lesson/" target="_blank" rel="noopener"><img src="thumbs/logo-wapo.svg" alt="The Washington Post" style="--h:0.95"></a></li><li aria-hidden="true"><img src="thumbs/logo-teenvogue.svg" alt="Teen Vogue" style="--h:1.15"></li><li aria-hidden="true"><img src="thumbs/logo-cnn.svg" alt="CNN" style="--h:1.3"></li></ul></div>
@@ -304,17 +305,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
     </div>
   </section>
 
-  <section class="studio" aria-labelledby="studio-h">
-    <div class="wrap">
-      <a class="studio-logo" href="filmavation.html" aria-label="FILMAVATION Studios">
-        <img id="studio-h" src="thumbs/filmavation-wordmark.jpg" alt="FILMAVATION Studios" width="980" height="270">
-      </a>
-      <div class="studio-copy">
-        <p>Most of this work was produced through FILMAVATION Studios, the studio I founded in Orlando in 2022: film plus innovation, from LED-wall virtual production to cinema glass on every job.</p>
-        <a class="studio-link mono" href="filmavation.html">What is FILMAVATION &rarr;</a>
-      </div>
-    </div>
-  </section>
 
   <section class="work" id="work" aria-labelledby="work-h">
     <div class="wrap">
