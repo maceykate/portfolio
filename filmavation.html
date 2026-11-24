@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Macey Woodburn: producer, camera and editor. Netflix, NBCUniversal/Peacock, Disney and commercial credits. Founder of FILMAVATION Studios.">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>FILMAVATION Studios</title>
+</head>
+<body>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600&family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: the studio's own paper-and-halftone identity. The stipple ident opens the page, then thesis, three numbered bays, clients. Single dark "screening room" look by choice, to match the ident. */
+:root{
+  --paper:#070708; --paper-2:#121213; --ink:#f2f2ef; --ink-2:#9a9a96; --line:#2a2a2b;
+  --hud:#6e6e6c; --hud-strong:#c9c9c6; --accent:#E08A3C;
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",sans-serif;
+  --ident:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --sub:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb, var(--paper) 86%, transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
+.brand{font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
+.top nav{display:flex;gap:20px}
+.top nav a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.top nav a:hover,.top nav a[aria-current]{color:var(--ink)}
+.top nav a[aria-current]{text-decoration:underline;text-underline-offset:6px}
+
+/* ---------- stipple ident ---------- */
+.ident{position:relative;height:min(86svh,780px);min-height:440px;overflow:hidden;background:var(--paper);border-bottom:1px solid var(--line)}
+#stage{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:none;touch-action:pan-y}
+.hud{position:absolute;z-index:2;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hud);pointer-events:none;user-select:none;font-variant-numeric:tabular-nums}
+.hud.tl{top:18px;left:var(--gut-l)}
+.hud.tr{top:18px;right:var(--gut-r);text-align:right}
+.hud.bl{bottom:18px;left:var(--gut-l)}
+.hud b{color:var(--hud-strong);font-weight:500}
+.rec{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-right:8px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+#replay{position:absolute;z-index:3;bottom:14px;right:var(--gut-r);font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hud-strong);background:transparent;border:1px solid var(--hud);padding:9px 12px;border-radius:2px;cursor:pointer}
+#replay:hover{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+
+/* ---------- content ---------- */
+.intro .wrap{padding-block:64px 56px}
+.logo-top{margin:0 0 36px}
+.logo-top img{display:block;width:min(620px,86vw);height:auto;filter:invert(1) contrast(1.8);mix-blend-mode:screen}
+.thesis{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,6vw,84px);line-height:.88;margin:0;max-width:16ch;text-wrap:balance}
+.lede{color:var(--ink-2);max-width:58ch;margin:20px 0 0;font-size:17px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:44px;border-top:2px solid var(--ink)}
+.facts div{padding:16px 16px 0 0}
+.facts b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(40px,5vw,68px);line-height:.9;font-variant-numeric:tabular-nums}
+.facts span{display:block;margin-top:8px;color:var(--ink-2);font-size:14px;max-width:24ch}
+
+section.band{border-top:1px solid var(--line)}
+section.band .wrap{padding-block:72px}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;margin-bottom:28px}
+.sechead h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.88;margin:0}
+.sechead p{margin:0;color:var(--ink-2);max-width:46ch;font-size:15px}
+.bays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.bay{border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:14px;background:var(--paper);min-width:0}
+.bay .num{color:var(--accent)}
+.bay h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:34px;line-height:.95;margin:0}
+.bay p{margin:0;color:var(--ink-2)}
+.bay .proof{margin-top:auto;border-top:1px solid var(--line);padding-top:14px}
+.bay .proof b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;color:var(--ink-2)}
+.logos{display:flex;flex-wrap:wrap;gap:14px 40px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(24px,3vw,40px);line-height:1}
+.logos span{white-space:nowrap}
+.press{margin-top:32px;color:var(--ink-2)}
+.press b{color:var(--ink);font-weight:500}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.cta h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(44px,8vw,112px);line-height:.86;margin:0}
+.cta p{color:var(--ink-2);margin:12px 0 0}
+.btn{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--paper);padding:14px 18px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--ink-2);padding-block:22px 40px;border-top:1px solid var(--line)}
+.foot nav{display:flex;flex-wrap:wrap;gap:18px}
+.foot a{text-decoration:none}
+
+@media (max-width:860px){
+  .bays{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div{padding:14px 12px 14px 0;border-bottom:1px solid var(--line)}
+  .cta .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){ .brand{font-size:16px} .top .wrap{flex-wrap:wrap;row-gap:6px} .top nav{gap:6px 14px;flex-wrap:wrap} .hud.bl{display:none} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .rec{animation:none} }
+  #ms-hero { --paper:#f0f0ee; --ink:#0b0b0c; --hud:#8a8a88; --hud-strong:#3a3a3a; position:relative; width:100%; height:min(80svh,720px); min-height:420px; border-top:1px solid #2a2a2b; overflow:hidden; background:var(--paper); color:var(--ink); }
+  #ms-stage { position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:pan-y; cursor:ew-resize; outline:none; }
+  .ms-hud { position:absolute; z-index:2; font:500 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase;
+         color:var(--hud); pointer-events:none; user-select:none; -webkit-user-select:none; font-variant-numeric:tabular-nums; }
+  .ms-hud b { color:var(--hud-strong); font-weight:500; }
+  .ms-tl { top:18px; left:18px; } .ms-tr { top:18px; right:18px; text-align:right; } .ms-bl { bottom:18px; left:18px; }
+  .ms-rec { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--ink); margin-right:8px; animation:blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+  #ms-replay { position:absolute; z-index:3; bottom:14px; right:14px; font:500 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase;
+            color:var(--hud-strong); background:transparent; border:1px solid var(--hud); padding:9px 12px; border-radius:2px; cursor:pointer; }
+  #ms-replay:hover { color:var(--paper); background:var(--ink); border-color:var(--ink); }
+  #ms-replay:focus-visible, #ms-stage:focus-visible { outline:2px solid var(--ink); outline-offset:-4px; }
+  .ms-hint { transition:opacity .6s; }
+  /* dark version for the portfolio: light dots on #0F0F0E */
+  #ms-hero[data-theme="dark"] { background:#0F0F0E; color:#EEECE5; }
+  #ms-hero[data-theme="dark"] .ms-hud { color:#6d6a63; }
+  #ms-hero[data-theme="dark"] .ms-hud b { color:#A29E94; }
+  #ms-hero[data-theme="dark"] .ms-rec { background:#EEECE5; }
+  #ms-hero[data-theme="dark"] #ms-replay { color:#A29E94; border-color:#4a4843; }
+  #ms-hero[data-theme="dark"] #ms-replay:hover { color:#0F0F0E; background:#EEECE5; border-color:#EEECE5; }
+  #ms-hero[data-theme="dark"] #ms-replay:focus-visible, #ms-hero[data-theme="dark"] #ms-stage:focus-visible { outline-color:#EEECE5; }
+  @media (prefers-reduced-motion: reduce) { .ms-rec { animation:none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">MACEY WOODBURN</a>
+    <nav aria-label="Site">
+      <a href="index.html">Footage</a>
+      <a href="creative-producing.html">Producing</a>
+      <a href="camera-department.html">Camera dept</a>
+      <a href="#top" aria-current="page">Studio</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="ident" id="ident" aria-labelledby="ident-h">
+    <h1 class="sr" id="ident-h">FILMAVATION Studios</h1>
+    <canvas id="stage" aria-label="Animated FILMAVATION Studios logo built from halftone dots that react to the cursor like a magnet"></canvas>
+    <div class="hud tl"><span class="rec"></span><b id="tc">00:00:00:00</b> &nbsp;24 FPS</div>
+    <div class="hud tr">Field &nbsp;<b id="pol">N &middot; Repel</b></div>
+    <div class="hud bl">Move to bend the field &nbsp;&middot;&nbsp; Click to flip poles</div>
+    <button id="replay" type="button">Replay &#8634;</button>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p class="thesis">Where film craft meets what&rsquo;s next</p>
+      <p class="lede">FILMAVATION is the production studio I started in Orlando in 2022. The name is the mission: film plus innovation. We pair classic cinema craft with the newest tools on set, like LED-wall virtual production, and we&rsquo;re building toward AI in pre-production next. As a student at UF&rsquo;s Innovation Academy with a minor in Innovation (AI), I&rsquo;m always testing what new tech can do for a shoot.</p>
+      <div class="facts">
+        <div><b>2022</b><span>Founded in Orlando, FL</span></div>
+        <div><b>200</b><span>Paid projects &mdash; just hit it!</span></div>
+        <div><b>$100K</b><span>Pink Ahead campaign, shot on an LED wall</span></div>
+        <div><b>3</b><span>National outlets have run our work</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="bays-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="bays-h">Where we innovate</h2><p>Three areas where the studio pushes beyond a standard shoot.</p></div>
+      <div class="bays">
+        <article class="bay">
+          <span class="num mono">01 &middot; On set</span>
+          <h3>Virtual production</h3>
+          <p>Shooting talent in front of LED walls, with animators building the world live so the environment is captured in camera instead of added in post.</p>
+          <div class="chips"><span>LED volume</span><span>In-camera VFX</span><span>Animation</span></div>
+          <div class="proof"><b>Proof</b>Pink Ahead, a $100K breast cancer awareness campaign produced with animators on an LED wall, with anticipated Super Bowl airtime.</div>
+        </article>
+        <article class="bay">
+          <span class="num mono">02 &middot; Next up</span>
+          <h3>AI-assisted development</h3>
+          <p>Where the studio is headed: bringing AI into the work before the camera rolls, from prompt-driven visual ideation and previsualization to research, transcription and logging.</p>
+          <div class="chips"><span>Previs</span><span>Ideation</span><span>Logging</span><span>Workflow</span></div>
+          <div class="proof"><b>Foundation</b>UF Innovation Academy student with a minor in Innovation (AI), and a 2026 IRTS Foundation Summer Fellow who studied GenAI production, VFX and media economics.</div>
+        </article>
+        <article class="bay">
+          <span class="num mono">03 &middot; Craft</span>
+          <h3>Cinema glass &amp; film</h3>
+          <p>Bringing high-end camera craft to every scale of job: cinema bodies, anamorphic and vintage lenses, and real film stock when the story calls for it.</p>
+          <div class="chips"><span>ARRI</span><span>RED</span><span>Sony</span><span>Anamorphic</span><span>35mm</span></div>
+          <div class="proof"><b>Toolkit</b>ARRI, RED and Sony cinema systems; Cooke and anamorphic optics; Adobe Creative Suite, DaVinci Resolve and Frame.io.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="clients-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="clients-h">Clients</h2><p>Brands, teams and artists FILMAVATION has produced for.</p></div>
+      <div class="logos"><span>Morgan &amp; Morgan</span><span>Orlando Magic</span><span>Rolling Loud</span><span>818 Tequila &times; Kendall Jenner</span><span>Sip Margs &times; Alix Earle</span><span>Pink Ahead</span></div>
+      <p class="press">Work featured in <b>The New York Times</b>, <b>Teen Vogue</b> and <b>The Washington Post</b>.</p>
+    </div>
+  </section>
+
+
+  <section id="ms-hero" aria-label="Macey Woodburn">
+  <canvas id="ms-stage" tabindex="0" aria-label="Macey Woodburn, drawn in stipple dots. Move the cursor, drag, or use the arrow keys to make Macey run; each time she crosses the screen her outfit switches between her suit and her production gear."></canvas>
+  <div class="ms-hud ms-tl"><span class="ms-rec"></span><b id="ms-tc">00:00:00:00</b> &nbsp;24 FPS</div>
+  <div class="ms-hud ms-tr">Take <b id="ms-take">01</b> &nbsp;&middot;&nbsp; <b id="ms-look">Set gear</b></div>
+  <div class="ms-hud ms-bl ms-hint" id="ms-hint">Move to run &middot; Click to stop, drop &amp; roll</div>
+  <button id="ms-replay" type="button">Replay &#8634;</button>
+</section>
+
+  <section class="band cta" aria-labelledby="cta-h">
+    <div class="wrap">
+      <div><h2 id="cta-h">Bring us the idea</h2><p>Contact: <span style="font-family:var(--mono);color:var(--ink)">maceywoodburn@gmail.com</span></p></div>
+      <a class="btn" href="creative-producing.html">See producing work</a>
+    </div>
+    <div class="wrap"><div class="foot mono"><span>&copy; 2026 FILMAVATION Studios &middot; Macey Woodburn</span><nav><a href="index.html">Footage</a><a href="camera-department.html">Camera department</a></nav></div></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const host = document.getElementById('ident');
+  const cvs = document.getElementById('stage');
+  const ctx = cvs.getContext('2d');
+  const tcEl = document.getElementById('tc');
+  const polEl = document.getElementById('pol');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const INK = '#f2f2ef', PAPER = '#070708';
+  const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n);
+
+  let W = 0, H = 0, DPR = 1, nowS = 0, onScreen = true;
+  let textCanvas, particles = [], spacing = 4, fontPx = 100, textBox = null, studios = null;
+  let t0 = performance.now(), phase = 'intro', outStart = 0, wavesShown = false;
+  const mouse = { x: -9999, y: -9999, sx: -9999, sy: -9999, active: 0 };
+  let pol = 1, polS = 1;
+  const pulses = [];
+  let lastAuto = 0, firedSolid = false;
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const smooth = (a, b, v) => { const x = clamp((v - a) / (b - a)); return x * x * (3 - 2 * x); };
+  const easeOutExpo = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  const easeInCubic = x => x * x * x;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const fieldR = () => clamp(Math.min(W, H) * 0.18, 90, 220);
+
+  const PULSE_LIFE = 2.4;
+  function field(x, y, out) {
+    let ox = 0, oy = 0, en = 0;
+    if (mouse.active > 0.02) {
+      const R = fieldR(), dx = x - mouse.sx, dy = y - mouse.sy, d2 = dx * dx + dy * dy;
+      if (d2 < R * R * 1.7) {
+        const d = Math.sqrt(d2) || 1, f = Math.pow(1 - Math.min(1, d / (R * 1.3)), 2) * mouse.active;
+        const rep = (polS + 1) / 2, att = 1 - rep;
+        ox += dx / d * f * R * 0.42 * rep - dx * f * 0.8 * att;
+        oy += dy / d * f * R * 0.42 * rep - dy * f * 0.8 * att;
+        en = Math.max(en, f);
+      }
+    }
+    for (const p of pulses) {
+      const age = nowS - p.born, rad = age * Math.max(W, H) * 0.5, w = 26 + age * 22;
+      const dx = x - p.x, dy = y - p.y, d = Math.hypot(dx, dy) || 1;
+      const g = Math.exp(-Math.pow((d - rad) / w, 2)) * (1 - age / PULSE_LIFE) * p.amp;
+      if (g < 0.01) continue;
+      ox += dx / d * g * 26; oy += dy / d * g * 26;
+      en = Math.max(en, g);
+    }
+    out[0] = ox; out[1] = oy; out[2] = en;
+    return out;
+  }
+  const F = [0, 0, 0];
+  function emitPulse(x, y, amp = 1) { pulses.push({ x, y, born: nowS, amp }); if (pulses.length > 6) pulses.shift(); }
+
+  const grain = document.createElement('canvas');
+  grain.width = grain.height = 220;
+  (() => {
+    const g = grain.getContext('2d'), id = g.createImageData(220, 220);
+    for (let i = 0; i < id.data.length; i += 4) { const v = Math.random() * 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; }
+    g.putImageData(id, 0, 0);
+  })();
+  let grainPattern = null;
+
+  const RIBBONS = [
+    { y0: 0.40, y1: 0.10, amp: 0.07, hw: 0.11, ph: 0.0, tw: 1.1, sp: 1.0 },
+    { y0: 0.92, y1: 0.60, amp: 0.06, hw: 0.12, ph: 2.1, tw: 0.9, sp: -0.8 },
+  ];
+  function ribbonCenter(r, u, t) {
+    const m = Math.min(W, H);
+    return (r.y0 + (r.y1 - r.y0) * u) * H
+      + r.amp * m * Math.sin(Math.PI * 2 * 0.75 * u + t * 0.32 * r.sp + r.ph)
+      + r.amp * 0.45 * m * Math.sin(Math.PI * 2 * 1.6 * u - t * 0.47 + r.ph * 1.7);
+  }
+  function drawRibbons(t, reveal) {
+    const m = Math.min(W, H);
+    const NU = Math.round(clamp(W / 7, 90, 220));
+    const NV = Math.round(clamp(m / 22, 26, 44));
+    const rMax = clamp(m / 330, 1.4, 3.2);
+    ctx.beginPath();
+    for (const r of RIBBONS) {
+      const hwPx = r.hw * m;
+      for (let i = 0; i < NU; i++) {
+        const u = -0.08 + (i / (NU - 1)) * 1.16;
+        const rev = clamp((reveal * 1.4 - u) * 3.2);
+        if (rev <= 0) continue;
+        const cx = u * W, cy = ribbonCenter(r, u, t);
+        const tw = Math.PI * r.tw * u + 0.7 * Math.sin(t * 0.28 + u * 3.6 + r.ph) + r.ph;
+        const ct = Math.cos(tw), st = Math.sin(tw);
+        const widthMod = 0.75 + 0.25 * Math.sin(u * 5.0 + t * 0.4 + r.ph);
+        const uEnv = smooth(-0.08, 0.12, u) * (1 - smooth(0.9, 1.08, u));
+        for (let j = 0; j < NV; j++) {
+          const v = -1 + (2 * j) / (NV - 1);
+          const env = Math.pow(1 - v * v, 1.4);
+          let x = cx + v * hwPx * 0.38 * st;
+          let y = cy + v * hwPx * ct * widthMod + Math.sin(v * 3.1 + u * 9 + t * 0.9) * hwPx * 0.06;
+          const shade = 0.5 + 0.5 * Math.sin(tw * 1.3 + v * 1.6 - t * 0.2);
+          let rad = rMax * env * uEnv * rev * (0.22 + 0.78 * shade * shade);
+          if (rad < 0.2) continue;
+          field(x, y, F);
+          x += F[0]; y += F[1];
+          rad *= 1 + F[2] * (polS > 0 ? 0.9 : 0.4);
+          if (rad < 0.25) continue;
+          ctx.moveTo(x + rad, y); ctx.arc(x, y, rad, 0, 6.2832);
+        }
+      }
+    }
+    ctx.fillStyle = INK; ctx.fill();
+  }
+
+  function layoutText() {
+    const meas = document.createElement('canvas').getContext('2d');
+    meas.font = '400 100px ' + cssVar('--ident');
+    const w100 = meas.measureText('FILMAVATION').width;
+    fontPx = Math.min((W * 0.74) / w100 * 100, H * 0.2);
+    const sub = Math.max(11, fontPx * 0.2);
+    const blockH = fontPx * 0.82 + sub * 1.9;
+    const top = H / 2 - blockH / 2;
+    textBox = { x: W / 2, base: top + fontPx * 0.82, w: w100 * fontPx / 100 };
+    studios = { size: sub, y: textBox.base + sub * 1.75, letters: 'STUDIOS'.split('') };
+    textCanvas = document.createElement('canvas');
+    textCanvas.width = W * DPR; textCanvas.height = H * DPR;
+    const tc = textCanvas.getContext('2d');
+    tc.scale(DPR, DPR);
+    paintTitle(tc);
+    const sc = document.createElement('canvas'); sc.width = W; sc.height = H;
+    const sx = sc.getContext('2d'); paintTitle(sx);
+    const data = sx.getImageData(0, 0, W, H).data;
+    spacing = clamp(fontPx / 30, 2.6, 6);
+    particles = [];
+    for (let y = textBox.base - fontPx; y < textBox.base + fontPx * 0.1; y += spacing) {
+      for (let x = textBox.x - textBox.w / 2 - 10; x < textBox.x + textBox.w / 2 + 10; x += spacing) {
+        const jx = x + rand(-0.3, 0.3) * spacing, jy = y + rand(-0.3, 0.3) * spacing;
+        const px = Math.round(jx), py = Math.round(jy);
+        if (px < 0 || py < 0 || px >= W || py >= H) continue;
+        if (data[(py * W + px) * 4 + 3] > 128) particles.push(makeParticle(jx, jy));
+      }
+    }
+  }
+  function paintTitle(c) {
+    c.fillStyle = INK; c.strokeStyle = INK;
+    c.font = '400 ' + fontPx + 'px ' + cssVar('--ident');
+    c.textAlign = 'center'; c.textBaseline = 'alphabetic';
+    c.lineJoin = 'round'; c.lineWidth = fontPx * 0.045;
+    c.fillText('FILMAVATION', textBox.x, textBox.base);
+    c.strokeText('FILMAVATION', textBox.x, textBox.base);
+  }
+  function scatterPoint() {
+    const r = RIBBONS[Math.random() < 0.5 ? 0 : 1];
+    const u = Math.random();
+    const m = Math.min(W, H);
+    return { x: u * W, y: ribbonCenter(r, u, 0) + rand(-1, 1) * r.hw * m * 0.8 };
+  }
+  function makeParticle(tx, ty) {
+    const s = scatterPoint();
+    const nx = (tx - (textBox.x - textBox.w / 2)) / textBox.w;
+    return { tx, ty, sx: s.x, sy: s.y,
+      cx: rand(-1, 1) * Math.min(W, H) * 0.25, cy: rand(-1, 1) * Math.min(W, H) * 0.25,
+      delay: 0.55 + nx * 0.75 + Math.random() * 0.35, dur: rand(1.2, 1.7), seed: Math.random() * 6.28,
+      ox: 0, oy: 0, vx: 0, vy: 0, kick: rand(0.85, 1.15) };
+  }
+  function pushParticle(p) {
+    field(p.tx, p.ty, F);
+    const tx = F[0] * p.kick, ty = F[1] * p.kick;
+    p.vx = (p.vx + (tx - p.ox) * 0.16) * 0.78;
+    p.vy = (p.vy + (ty - p.oy) * 0.16) * 0.78;
+    p.ox += p.vx; p.oy += p.vy;
+    return F[2];
+  }
+
+  const T = { mergeA: 3.15, mergeB: 3.75, solidA: 3.5, solidB: 4.05, subA: 3.7, idle: 5.2 };
+
+  function drawParticles(t, cut) {
+    const rIn = spacing * 0.26, rFull = spacing * 0.78;
+    const merge = smooth(T.mergeA, T.mergeB, t);
+    ctx.beginPath();
+    for (const p of particles) {
+      let x, y;
+      if (phase === 'out') {
+        const k = easeInCubic(clamp((performance.now() - outStart) / 900 - p.seed * 0.03));
+        x = p.tx + (p.sx - p.tx) * k + p.cx * Math.sin(k * Math.PI) * 0.6;
+        y = p.ty + (p.sy - p.ty) * k + p.cy * Math.sin(k * Math.PI) * 0.6;
+        const r = rFull + (rIn - rFull) * Math.min(1, k * 2);
+        ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+        continue;
+      }
+      const k = clamp((t - p.delay) / p.dur);
+      if (k <= 0) continue;
+      const e = easeOutExpo(k);
+      const arc = Math.sin(e * Math.PI) * (1 - e);
+      x = p.sx + (p.tx - p.sx) * e + p.cx * arc * 2.2;
+      y = p.sy + (p.ty - p.sy) * e + p.cy * arc * 2.2;
+      const settle = smooth(0.85, 1, k) * (1 - merge);
+      x += Math.sin(t * 6 + p.seed) * 0.6 * settle;
+      y += Math.cos(t * 5 + p.seed) * 0.6 * settle;
+      const en = pushParticle(p);
+      const moved = Math.hypot(p.ox, p.oy);
+      x += p.ox * e; y += p.oy * e;
+      let r = rIn * (0.5 + 0.5 * k) + (rFull - rIn) * merge;
+      if (cut) {
+        const b = cut(p.tx, p.ty);
+        if (b <= 0.01 && moved < 0.5) continue;
+        r = spacing * (0.16 + 0.58 * (1 - b));
+      }
+      r *= 1 / (1 + moved / (spacing * 7));
+      if (polS < 0) r *= 1 + en * 0.25;
+      ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+    }
+    ctx.fillStyle = INK; ctx.fill();
+  }
+
+  const layer = document.createElement('canvas');
+  function holeAt(x, y) {
+    let b = 0;
+    if (mouse.active > 0.02) {
+      const r = fieldR() * 0.55, dx = x - mouse.sx, dy = y - mouse.sy;
+      b = mouse.active * Math.exp(-(dx * dx + dy * dy) / (r * r));
+    }
+    for (const p of pulses) {
+      const age = nowS - p.born, rad = age * Math.max(W, H) * 0.5, w = 26 + age * 22;
+      const d = Math.hypot(x - p.x, y - p.y);
+      b = Math.max(b, Math.min(1, Math.exp(-Math.pow((d - rad) / (w * 1.4), 2)) * (1 - age / PULSE_LIFE) * p.amp * 1.3));
+    }
+    return b;
+  }
+  function drawSolid(alpha) {
+    if (alpha <= 0) return null;
+    const R = fieldR();
+    const nearText = mouse.active > 0.02 &&
+      Math.abs(mouse.sx - textBox.x) < textBox.w / 2 + R && mouse.sy > textBox.base - fontPx - R && mouse.sy < textBox.base + R;
+    if (!nearText && !pulses.length) {
+      ctx.globalAlpha = alpha; ctx.drawImage(textCanvas, 0, 0, W, H); ctx.globalAlpha = 1;
+      return null;
+    }
+    if (layer.width !== textCanvas.width || layer.height !== textCanvas.height) { layer.width = textCanvas.width; layer.height = textCanvas.height; }
+    const l = layer.getContext('2d');
+    l.setTransform(1, 0, 0, 1, 0, 0);
+    l.clearRect(0, 0, layer.width, layer.height);
+    l.drawImage(textCanvas, 0, 0);
+    l.setTransform(DPR, 0, 0, DPR, 0, 0);
+    l.globalCompositeOperation = 'destination-out';
+    if (nearText) {
+      const rr = R * 0.55 * 2.2;
+      const g = l.createRadialGradient(mouse.sx, mouse.sy, 0, mouse.sx, mouse.sy, rr);
+      for (let s = 0; s <= 1.001; s += 0.1) g.addColorStop(Math.min(1, s), `rgba(0,0,0,${mouse.active * Math.exp(-Math.pow(s * 2.2, 2))})`);
+      l.fillStyle = g; l.fillRect(mouse.sx - rr, mouse.sy - rr, rr * 2, rr * 2);
+    }
+    for (const p of pulses) {
+      const age = nowS - p.born, rad = age * Math.max(W, H) * 0.5, w = (26 + age * 22) * 1.4;
+      const k = (1 - age / PULSE_LIFE) * p.amp * 1.3;
+      const r0 = Math.max(0, rad - w * 2.5), r1 = rad + w * 2.5;
+      const g = l.createRadialGradient(p.x, p.y, r0, p.x, p.y, r1);
+      for (let s = 0; s <= 1.001; s += 0.1) {
+        const d = r0 + (r1 - r0) * s;
+        g.addColorStop(Math.min(1, s), `rgba(0,0,0,${Math.min(1, Math.exp(-Math.pow((d - rad) / w, 2)) * k)})`);
+      }
+      l.fillStyle = g; l.fillRect(p.x - r1, p.y - r1, r1 * 2, r1 * 2);
+    }
+    l.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = alpha; ctx.drawImage(layer, 0, 0, W, H); ctx.globalAlpha = 1;
+    return holeAt;
+  }
+
+  function drawStudios(t) {
+    const { size, y, letters } = studios;
+    ctx.font = `500 ${size}px ` + cssVar('--sub');
+    ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'center'; ctx.fillStyle = INK;
+    const gap = size * 1.55, n = letters.length;
+    for (let i = 0; i < n; i++) {
+      const k = smooth(T.subA + i * 0.09, T.subA + i * 0.09 + 0.7, t);
+      if (k <= 0) continue;
+      let x = textBox.x + (i - (n - 1) / 2) * gap * (1 + (1 - k) * 1.6);
+      let yy = y + (1 - k) * size * 0.6;
+      field(x, yy - size * 0.35, F);
+      x += F[0] * 0.5; yy += F[1] * 0.5;
+      ctx.globalAlpha = k;
+      ctx.fillText(letters[i], x, yy);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawReticle() {
+    if (mouse.active < 0.05) return;
+    const a = mouse.active, x = mouse.x, y = mouse.y, R = fieldR();
+    ctx.save();
+    ctx.strokeStyle = INK; ctx.fillStyle = INK;
+    ctx.globalAlpha = 0.22 * a; ctx.lineWidth = 1;
+    ctx.setLineDash([2, 6]); ctx.lineDashOffset = -nowS * 18 * polS;
+    ctx.beginPath(); ctx.arc(x, y, R * (polS > 0 ? 0.75 : 0.55) + 0.1, 0, 6.2832); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 0.9 * a; ctx.lineWidth = 1.25;
+    ctx.beginPath(); ctx.arc(x, y, 9, 0, 6.2832); ctx.stroke();
+    for (let i = 0; i < 4; i++) {
+      const ang = i * Math.PI / 2 + nowS * 0.6 * polS;
+      const c = Math.cos(ang), s = Math.sin(ang);
+      const r1 = polS > 0 ? 13 : 20, r2 = polS > 0 ? 20 : 13;
+      ctx.beginPath(); ctx.moveTo(x + c * r1, y + s * r1); ctx.lineTo(x + c * r2, y + s * r2); ctx.stroke();
+    }
+    ctx.font = `500 10px ${cssVar('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(pol > 0 ? 'N' : 'S', x, y + 0.5);
+    ctx.restore();
+  }
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!onScreen) return;
+    nowS = now / 1000;
+    let t = (now - t0) / 1000;
+    if (reduce && phase === 'intro') t = T.idle + 0.1;
+    mouse.sx += (mouse.x - mouse.sx) * 0.14; mouse.sy += (mouse.y - mouse.sy) * 0.14;
+    mouse.active += ((mouse.x > -999 ? 1 : 0) - mouse.active) * 0.07;
+    polS += (pol - polS) * 0.1;
+    while (pulses.length && nowS - pulses[0].born > PULSE_LIFE) pulses.shift();
+    if (phase === 'intro' && !reduce) {
+      const cx = textBox.x, cy = textBox.base - fontPx * 0.42;
+      if (!firedSolid && t > T.solidB) { firedSolid = true; emitPulse(cx, cy, 1.15); lastAuto = nowS; }
+      if (t > T.idle && nowS - lastAuto > 6) { emitPulse(cx, cy, 0.8); lastAuto = nowS; }
+    }
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, W, H);
+    const waveT = reduce ? 0 : nowS;
+    const reveal = wavesShown ? 1 : (reduce ? 1 : smooth(0, 2.4, t));
+    if (reveal >= 1) wavesShown = true;
+    drawRibbons(waveT, reveal);
+    if (phase === 'out') {
+      drawParticles(t);
+      if (now - outStart > 950) { phase = 'intro'; t0 = now - 300; firedSolid = false; for (const p of particles) Object.assign(p, refreshStart()); }
+    } else {
+      const solid = smooth(T.solidA, T.solidB, t);
+      const cut = drawSolid(solid);
+      if (solid < 1) drawParticles(t);
+      else if (cut) drawParticles(t, cut);
+      else for (const p of particles) pushParticle(p);
+      drawStudios(t);
+    }
+    const vg = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.35, W / 2, H / 2, Math.hypot(W, H) * 0.62);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.45)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+    if (grainPattern) {
+      ctx.save(); ctx.globalAlpha = 0.05; ctx.globalCompositeOperation = 'screen';
+      const ox = reduce ? 0 : (Math.random() * 220) | 0, oy = reduce ? 0 : (Math.random() * 220) | 0;
+      ctx.translate(-ox, -oy); ctx.fillStyle = grainPattern; ctx.fillRect(0, 0, W + 220, H + 220); ctx.restore();
+    }
+    drawReticle();
+    const f = Math.floor(Math.max(0, (now - t0) / 1000) * 24);
+    const pad = n => String(n).padStart(2, '0');
+    tcEl.textContent = `00:${pad(Math.floor(f / 1440) % 60)}:${pad(Math.floor(f / 24) % 60)}:${pad(f % 24)}`;
+  }
+  function refreshStart() {
+    const s = scatterPoint();
+    return { sx: s.x, sy: s.y, cx: rand(-1, 1) * Math.min(W, H) * 0.25, cy: rand(-1, 1) * Math.min(W, H) * 0.25, ox: 0, oy: 0, vx: 0, vy: 0 };
+  }
+  function resize() {
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = host.clientWidth; H = host.clientHeight;
+    cvs.width = Math.round(W * DPR); cvs.height = Math.round(H * DPR);
+    grainPattern = ctx.createPattern(grain, 'repeat');
+    layoutText();
+  }
+  function replay() {
+    if (phase === 'out') return;
+    const t = (performance.now() - t0) / 1000;
+    if (t < T.solidB) { t0 = performance.now(); firedSolid = false; for (const p of particles) Object.assign(p, refreshStart()); return; }
+    phase = 'out'; outStart = performance.now();
+  }
+  function flip(x, y) {
+    pol = -pol;
+    polEl.textContent = pol > 0 ? 'N · Repel' : 'S · Attract';
+    emitPulse(x, y, 1);
+  }
+
+  const setMouse = e => { const r = cvs.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; if (mouse.sx < -999) { mouse.sx = mouse.x; mouse.sy = mouse.y; } };
+  cvs.addEventListener('pointermove', setMouse);
+  cvs.addEventListener('pointerdown', e => { setMouse(e); flip(mouse.x, mouse.y); });
+  cvs.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
+  cvs.addEventListener('pointerup', e => { if (e.pointerType !== 'mouse') mouse.x = mouse.y = -9999; });
+  document.getElementById('replay').addEventListener('click', replay);
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
+  let seen = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { onScreen = es[0].isIntersecting; if (onScreen && !seen) { seen = true; t0 = performance.now(); wavesShown = false; firedSolid = false; for (const p of particles) Object.assign(p, refreshStart()); } }, { threshold: .3 }).observe(host);
+
+  const fontsReady = Promise.race([
+    Promise.all([document.fonts.load('400 100px Anton'), document.fonts.load('500 20px Montserrat'), document.fonts.load('500 10px "IBM Plex Mono"')]),
+    new Promise(r => setTimeout(r, 2500)),
+  ]);
+  fontsReady.then(() => { resize(); t0 = performance.now(); requestAnimationFrame(frame); });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  /* ===== SETTING: 'light' = ink on paper, 'dark' = light dots on the portfolio's #0F0F0E. Or add ?theme=dark to the link. ===== */
+  const THEME_SETTING = 'dark';
+  const PI = Math.PI;
+  const hero = document.getElementById('ms-hero'), cvs = document.getElementById('ms-stage'), ctx = cvs.getContext('2d');
+  { const arc = ctx.arc.bind(ctx); ctx.arc = (x, y, r, a, b) => arc(x, y, r > 0 ? r : 0, a, b); } // a dot can shrink to nothing, never below
+  const DARK = (new URLSearchParams(location.search).get('theme') || THEME_SETTING) === 'dark';
+  const INK = DARK ? '#EEECE5' : '#0b0b0c', PAPER = DARK ? '#0F0F0E' : '#f0f0ee';
+  hero.dataset.theme = DARK ? 'dark' : 'light';
+  const tcEl = document.getElementById('ms-tc'), takeEl = document.getElementById('ms-take'), lookEl = document.getElementById('ms-look'), hintEl = document.getElementById('ms-hint');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  if (coarse) hintEl.textContent = 'Drag to run · Tap to stop, drop & roll';
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const smooth = (a, b, v) => { const x = clamp((v - a) / (b - a)); return x * x * (3 - 2 * x); };
+  const easeOutExpo = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const hash = (x, y) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
+
+  let W = 0, H = 0, DPR = 1, cell = 5, fs = 100, groundY = 0, figPx = 200;
+  let t0 = performance.now(), last = performance.now();
+
+  // ===================== 3D Macey (rendered off-screen, then stippled) =====================
+  let R3 = null, scene, camera, glc, rw = 0, rh = 0, buf = null;
+  try {
+    R3 = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    R3.setPixelRatio(1); R3.setClearColor(0x000000, 0);
+    R3.outputEncoding = THREE.sRGBEncoding; R3.toneMapping = THREE.ACESFilmicToneMapping; R3.toneMappingExposure = 1.3;
+    glc = R3.getContext();
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(30, 1, .1, 100); camera.position.set(0, .35, 10); camera.lookAt(0, 0, 0);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2622, .6));
+    const key = new THREE.DirectionalLight(0xffffff, 1.9); key.position.set(-4, 5, 6); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, 1.6); rim.position.set(5, 3, -5); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xffffff, .45); fill.position.set(4, -1, 5); scene.add(fill);
+  } catch (e) { R3 = null; }
+
+  const mat = (hex, rough = .8, metal = 0) => { const m = new THREE.MeshStandardMaterial({ color: hex, roughness: rough, metalness: metal }); m.color.convertSRGBToLinear(); return m; };
+  const G = () => new THREE.Group();
+  const add = (p, m, x = 0, y = 0, z = 0) => { m.position.set(x, y, z); p.add(m); return m; };
+  const sphere = (r, m, seg = 24) => new THREE.Mesh(new THREE.SphereGeometry(r, seg, Math.round(seg * .7)), m);
+  function limb(len, r1, r2, m) { const g = G(); add(g, new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, len, 24), m), 0, -len / 2, 0); add(g, sphere(r1, m, 20)); add(g, sphere(r2, m, 20), 0, -len, 0); return g; }
+
+  const L1 = .245, L2 = .235;
+  function buildMacey(look) {
+    const suit = look === 'suit';
+    const C = {
+      skin: mat(0xd2a688, .6), hair: mat(0x24170f, .62), hl: mat(0x9a7448, .6),
+      top: suit ? mat(0xa3a6ab, .9) : mat(0x121214, .85), pants: suit ? mat(0x121214, .88) : mat(0x5a5b60, .92),
+      pocket: mat(0x303034, .9), shoe: suit ? mat(0x0b0b0c, .35, .1) : mat(0x4f72dc, .5), sole: mat(0xf4f1ea, .6),
+      cap: mat(0x121213, .7), set: mat(0x2b2b2e, .5, .3), gold: mat(0xd8c08a, .4, .2), silver: mat(0xe6e8ec, .45, .05),
+      inner: mat(0x111112, .8), cuff: mat(0xf4f1ea, .6), lapel: mat(0x7c7f85, .85)
+    };
+    if (suit) C.hair = mat(0x24170f, .45), C.hl = mat(0xa27a4c, .45); // glossy blowout
+    const root = G(), pelvis = G(); root.add(pelvis);
+    add(pelvis, sphere(.066, C.pants)).scale.set(.78, .62, 1);
+    const legs = [];
+    for (const s of [1, -1]) {
+      const hip = add(pelvis, G(), 0, -.01, s * .042);
+      hip.add(limb(L1, .042, .033, C.pants));
+      if (!suit) { const pk = add(hip, new THREE.Mesh(new THREE.BoxGeometry(.052, .064, .012), C.pocket), .002, -.13, s * .038); pk.rotation.x = s * -.08; }
+      const knee = add(hip, G(), 0, -L1, 0); knee.add(limb(L2, .033, .026, C.pants));
+      const ankle = add(knee, G(), 0, -L2, 0);
+      if (suit) { // pointed pumps with a slim heel
+        add(ankle, sphere(.5, C.shoe, 28), .036, -.02, 0).scale.set(.115, .03, .04);
+        add(ankle, new THREE.Mesh(new THREE.CylinderGeometry(.006, .004, .036, 10), C.shoe), -.014, -.032, 0);
+      } else {
+        add(ankle, sphere(.5, C.shoe, 28), .03, -.014, 0).scale.set(.11, .052, .062);
+        add(ankle, new THREE.Mesh(new THREE.BoxGeometry(.104, .012, .06), C.sole), .03, -.034, 0);
+      }
+      legs.push({ hip, knee, ankle });
+    }
+    const torso = add(pelvis, G(), 0, .02, 0);
+    if (suit) {
+      // Standout-style hourglass blazer: structured shoulders, cinched waist, flared hip hem
+      const prof = [[.097, -.115], [.091, -.06], [.075, .01], [.06, .09], [.066, .15], [.083, .21], [.088, .26], [.081, .296], [.034, .326]]
+        .map(p => new THREE.Vector2(p[0], p[1]));
+      const jacket = add(torso, new THREE.Mesh(new THREE.LatheGeometry(prof, 56), C.top)); jacket.scale.set(.64, 1, 1); C.top.side = THREE.DoubleSide;
+      for (const s of [1, -1]) add(torso, sphere(.043, C.top), 0, .293, s * .089).scale.set(.85, .78, 1.08); // padded shoulders
+      // deep V neckline framed by notched lapels
+      const v = new THREE.Shape(); v.moveTo(-.032, .305); v.lineTo(.032, .305); v.lineTo(0, .135); v.closePath();
+      add(torso, new THREE.Mesh(new THREE.ShapeGeometry(v), C.skin), .058, 0, 0).rotation.y = PI / 2;
+      for (const s of [1, -1]) {
+        const lap = add(torso, new THREE.Mesh(new THREE.BoxGeometry(.005, .18, .024), C.lapel), .06, .22, s * .027); lap.rotation.x = s * .2;
+        add(torso, new THREE.Mesh(new THREE.BoxGeometry(.005, .014, .02), C.lapel), .059, .3, s * .05).rotation.x = s * -.5; // notch
+        const pk = add(torso, new THREE.Mesh(new THREE.BoxGeometry(.016, .012, .046), C.lapel), .049, -.03, s * .05); pk.rotation.y = s * -.55; // flap pockets
+      }
+      add(torso, new THREE.Mesh(new THREE.BoxGeometry(.004, .006, .026), C.lapel), .052, .225, -.045);               // chest welt
+      for (const y of [.055, .095, .135]) add(torso, sphere(.0065, C.inner, 10), .041, y, 0);                       // three buttons
+    } else {
+      add(torso, new THREE.Mesh(new THREE.CylinderGeometry(.088, .07, .3, 32), C.top), 0, .15, 0).scale.set(.62, 1, 1);
+      for (const s of [1, -1]) add(torso, sphere(.036, C.top), 0, .282, s * .086);
+      add(torso, new THREE.Mesh(new THREE.CylinderGeometry(.071, .071, .016, 32), C.inner), 0, .005, 0).scale.set(.75, 1, 1);
+      add(torso, new THREE.Mesh(new THREE.BoxGeometry(.022, .05, .032), C.set), -.052, -.02, .026);
+    }
+    add(torso, new THREE.Mesh(new THREE.CylinderGeometry(.022, .025, .06, 16), C.skin), .004, .315, 0);
+    const head = add(torso, G(), .01, .385, 0);
+    add(head, sphere(.066, C.skin, 32)).scale.set(1, 1.08, .92);
+    // the braid is a jointed chain so it can swing; the long hair is a continuous sheet
+    const chains = []; let hairSheet = null;
+    const chain = (parent, x, y, z, n, seg, radii, matFn, opts) => {
+      const links = []; let p = add(parent, G(), x, y, z);
+      for (let i = 0; i < n; i++) {
+        const r = radii(i), m = add(p, sphere(1, matFn(i), 20), Math.sin(i * 1.5) * (opts.wavy ?? .007), -seg * .5, 0);
+        m.scale.set(r[0], r[1], r[2]); links.push(p); p = add(p, G(), 0, -seg, 0);
+      }
+      chains.push({ links, ...opts }); return links;
+    };
+    if (suit) {
+      // crown, then one continuous curtain of long wavy hair (reshaped every frame in updateHair)
+      add(head, sphere(.073, C.hair, 32), -.012, .016, 0).scale.set(1.04, 1.05, 1.1);
+      const geo = new THREE.CylinderGeometry(1, 1, 1, 40, 30, true, PI * .86, PI * 1.28);
+      const pos = geo.attributes.position, n = pos.count, theta = new Float32Array(n), hh = new Float32Array(n), cols = new Float32Array(n * 3);
+      const c1 = new THREE.Color(0x24170f).convertSRGBToLinear(), c2 = new THREE.Color(0xa27a4c).convertSRGBToLinear(), cc = new THREE.Color();
+      for (let i = 0; i < n; i++) {
+        theta[i] = Math.atan2(pos.getX(i), pos.getZ(i)); hh[i] = .5 - pos.getY(i);
+        cc.copy(c1).lerp(c2, smooth(.55, 1, hh[i]) * .85); cols[i * 3] = cc.r; cols[i * 3 + 1] = cc.g; cols[i * 3 + 2] = cc.b; // balayage ends
+      }
+      geo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
+      const sheet = add(head, new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .5, side: THREE.DoubleSide })));
+      hairSheet = { sheet, pos, theta, hh };
+    } else {
+      add(head, sphere(.05, C.hair), -.034, -.018, 0);
+      add(head, new THREE.Mesh(new THREE.SphereGeometry(.071, 32, 16, 0, PI * 2, 0, PI / 2), C.cap), -.003, .008, 0).scale.set(1, 1.05, .95);
+      const brim = add(head, new THREE.Mesh(new THREE.CylinderGeometry(.062, .062, .007, 32, 1, false, -PI / 2 - .9, 1.8), C.cap), .012, .006, 0);
+      brim.scale.set(1.25, 1, 1); brim.rotation.z = -.1;
+      add(head, new THREE.Mesh(new THREE.TorusGeometry(.077, .0055, 8, 40, PI), C.set), -.006, .004, 0).rotation.y = PI / 2;
+      for (const s of [1, -1]) add(head, new THREE.Mesh(new THREE.CylinderGeometry(.026, .026, .016, 24), C.set), -.006, .002, s * .075).rotation.x = PI / 2;
+      const boom = add(head, G(), -.006, -.005, .078); boom.rotation.z = -(PI / 2 + .55);
+      add(boom, new THREE.Mesh(new THREE.CylinderGeometry(.0032, .0032, .075, 8), C.set), 0, .0375, 0);
+      add(boom, sphere(.009, C.inner, 12), 0, .078, 0);
+      // a long braid down past her shoulder blades, swinging as she moves
+      chain(head, -.058, -.02, 0, 13, .029, i => { const r = .023 - i * .0009; return [r, .019, r * 1.05]; }, i => i % 2 ? C.hair : C.hl, { counter: 1, trail: 1.25, wave: 1, base: -.12 });
+    }
+    const arms = [];
+    for (const s of [1, -1]) {
+      const sh = add(torso, G(), 0, .282, s * .097);
+      sh.add(limb(.16, .03, .025, suit ? C.top : C.skin));
+      if (!suit) add(sh, new THREE.Mesh(new THREE.CylinderGeometry(.037, .034, .085, 20), C.top), 0, -.03, 0);
+      const el = add(sh, G(), 0, -.16, 0);
+      el.add(limb(.15, .025, .021, suit ? C.top : C.skin));
+      if (!suit && s === 1) add(el, new THREE.Mesh(new THREE.TorusGeometry(.022, .0055, 8, 20), C.gold), 0, -.122, 0).rotation.x = PI / 2;
+      add(el, sphere(.027, C.skin, 18), 0, -.165, 0);
+      if (suit && s === 1) add(el, new THREE.Mesh(new THREE.BoxGeometry(.008, .12, .082), C.silver), .006, -.1, -.03);
+      arms.push({ sh, el });
+    }
+    root.userData = { pelvis, torso, head, legs, arms, chains, hairSheet };
+    return root;
+  }
+
+  // poses: sagittal angles, forward = +
+  const S = Math.sin, Co = Math.cos, mx = Math.max;
+  function gait(g, p, suit) {
+    let P;
+    if (g === 'walk') P = { lean: .04, th: [.04 + .34 * S(p), .04 + .34 * S(p + PI)], kn: [.08 + .6 * mx(0, Co(p)), .08 + .6 * mx(0, Co(p + PI))], ua: [-.38 * S(p), .38 * S(p)], fa: [.28, .28] };
+    else if (g === 'run') P = { lean: .34, th: [.3 + .85 * S(p), .3 + .85 * S(p + PI)], kn: [.35 + 1.6 * mx(0, Co(p)), .35 + 1.6 * mx(0, Co(p + PI))], ua: [.15 - 1.05 * S(p), .15 + 1.05 * S(p)], fa: [1.75, 1.75] };
+    else P = { lean: .02, th: [.04, -.04], kn: [.05, .05], ua: [.06, -.04], fa: [.2, .2] };
+    if (suit) { P.ua[0] = .1; P.fa[0] = 1.3; } // laptop stays tucked under her arm
+    return P;
+  }
+  function mixPose(A, B, k) {
+    const m = (a, b) => a.map((v, i) => lerp(v, b[i], k));
+    return { lean: lerp(A.lean, B.lean, k), th: m(A.th, B.th), kn: m(A.kn, B.kn), ua: m(A.ua, B.ua), fa: m(A.fa, B.fa) };
+  }
+  // long wavy hair: a curtain around the back of her head, falling past her shoulders to mid-back.
+  // Each frame: soft waves ripple down it, it hangs straight with gravity, streams back + lifts when she runs.
+  const HAIR_LEN = .43;
+  function updateHair(hs, P, t, s) {
+    const { pos, theta, hh } = hs, n = pos.count;
+    const hang = Math.sin(P.lean * .55), bounce = Math.sin(t * 9) * .004 * (.3 + s);
+    for (let i = 0; i < n; i++) {
+      const h = hh[i], th = theta[i], sh = smooth(0, .3, h);
+      const rz = .074 + .045 * sh + .014 * h;           // sides: hug the face, then fall wide past the shoulders
+      const rx = .071 + .02 * sh;                        // back: clears her shoulders
+      const cx = -.012 - .03 * sh;                       // the curtain sits behind her shoulders
+      const wave = (.005 + .022 * h) * Math.sin(h * 19 - t * 2.3 + th * 2.4) * (1 + s * .5)
+        + .006 * h * Math.sin(h * 41 + th * 6);           // finer secondary ripple so the waves read in stipple
+      const x = cx + (rx + wave) * Math.sin(th) + hang * h * HAIR_LEN - s * .62 * Math.pow(h, 1.4) * HAIR_LEN * .6;
+      const z = (rz + wave * .8) * Math.cos(th);
+      const y = .035 - h * HAIR_LEN + s * .16 * h * h * HAIR_LEN + bounce * h;
+      pos.setXYZ(i, x, y, z);
+    }
+    pos.needsUpdate = true; hs.sheet.geometry.computeVertexNormals();
+  }
+  function applyPose(fig, P, t, s = 0) {
+    const u = fig.userData; let reach = 0;
+    for (let i = 0; i < 2; i++) {
+      const L = u.legs[i];
+      L.hip.rotation.z = P.th[i]; L.knee.rotation.z = -P.kn[i]; L.ankle.rotation.z = -(P.th[i] - P.kn[i]) * .75;
+      reach = Math.max(reach, L1 * Math.cos(P.th[i]) + L2 * Math.cos(P.th[i] - P.kn[i]));
+      u.arms[i].sh.rotation.z = P.ua[i]; u.arms[i].el.rotation.z = P.fa[i];
+    }
+    u.pelvis.position.y = reach + .062 + Math.sin(t * 2.1) * .002;
+    u.torso.rotation.z = -P.lean; u.head.rotation.z = P.lean * .45;
+    // hair: hangs with gravity against her lean, streams back with speed, ripples in waves
+    if (u.hairSheet) updateHair(u.hairSheet, P, t, s);
+    for (const ch of u.chains) {
+      const n = ch.links.length;
+      ch.links.forEach((g, i) => {
+        const root = i === 0;
+        g.rotation.z = (root ? ch.base + P.lean * ch.counter - s * ch.trail * 1.3 : -s * ch.trail * .3)
+          + Math.sin(t * (5 + s * 9) - i * .85) * (.025 + s * .08) * ch.wave
+          + (ch.curl && i >= n - 2 ? ch.curl * .5 * (1 - s * .6) : 0);   // ends curl under (or flip out)
+        g.rotation.x = root && ch.splay ? ch.splay * (.2 + s * .1) : 0;  // side layers splay for volume
+      });
+    }
+  }
+
+  // holder = where she is + which way she faces (or lies); rollG spins her around her own long axis
+  let holder, rollG, figs = {}, qStand, qLie, eTmp, vD, UP;
+  if (R3) {
+    holder = G(); scene.add(holder); rollG = G(); holder.add(rollG);
+    figs.suit = buildMacey('suit'); figs.pa = buildMacey('pa'); rollG.add(figs.suit, figs.pa);
+    qStand = new THREE.Quaternion(); qLie = new THREE.Quaternion(); eTmp = new THREE.Euler(); vD = new THREE.Vector3(); UP = new THREE.Vector3(0, 1, 0);
+  }
+  // stop, drop & roll: arms crossed over her chest, legs together
+  const tuckPose = () => ({ lean: 0, th: [.02, -.02], kn: [.12, .12], ua: [.4, .4], fa: [2.1, 2.1] });
+
+  // ===================== layout =====================
+  let parts = [], burnStartX = 0, woodOffset = 0, jit = null, baseLine2 = 0, topParts = [];
+  function layout() {
+    const r = hero.getBoundingClientRect(); W = r.width; H = r.height;
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    cvs.width = Math.round(W * DPR); cvs.height = Math.round(H * DPR);
+    cell = clamp(Math.min(W, H) / 212, 2.4, 4.6); // ~2x the dots per area
+
+    // name: two lines, Anton, sized to fit
+    const meas = document.createElement('canvas').getContext('2d');
+    meas.font = '400 100px Anton';
+    const w2 = meas.measureText('WOODBURN').width, wWood = meas.measureText('WOOD').width;
+    fs = Math.min(W * .86 / w2 * 100, H * .62 / (2 * .9));
+    const lh = fs * .98, top = H * .5 - lh + fs * .02;
+    const base1 = top + fs * .78, base2 = base1 + lh;
+    const line2W = w2 * fs / 100, line2X = W / 2 - line2W / 2;
+    burnStartX = line2X + wWood * fs / 100; baseLine2 = base2;
+    const bx = [0, 1, 2, 3, 4].map(i => line2X + meas.measureText('WOOD' + 'BURN'.slice(0, i)).width * fs / 100); // B U R N edges
+    woodOffset = (line2W - wWood * fs / 100) / 2;
+    groundY = Math.min(H * .9, base2 + fs * .32);
+    figPx = Math.min(H * .56, fs * 2.3);
+
+    // each line is sampled from its own canvas so tall Anton capitals never bleed between lines
+    const lineData = (text, align, x, base) => {
+      const c = document.createElement('canvas'); c.width = Math.ceil(W); c.height = Math.ceil(H);
+      const g = c.getContext('2d'); g.fillStyle = '#000'; g.font = `400 ${fs}px Anton`; g.textBaseline = 'alphabetic'; g.textAlign = align;
+      g.fillText(text, x, base); return g.getImageData(0, 0, c.width, c.height).data;
+    };
+    const d1 = lineData('MACEY', 'center', W / 2, base1), d2 = lineData('WOODBURN', 'left', line2X, base2);
+    const cw = Math.ceil(W), ch = Math.ceil(H);
+    parts = [];
+    for (let y = top - fs * .1; y < base2 + fs * .12; y += cell) {
+      for (let x = W / 2 - line2W / 2 - cell * 2; x < W / 2 + line2W / 2 + cell * 2; x += cell) {
+        const jx = x + rand(-.28, .28) * cell, jy = y + rand(-.28, .28) * cell;
+        const px = Math.round(jx), py = Math.round(jy);
+        if (px < 0 || py < 0 || px >= cw || py >= ch) continue;
+        const i = (py * cw + px) * 4 + 3, in1 = d1[i] >= 128, in2 = d2[i] >= 128;
+        if (!in1 && !in2) continue;
+        const part = in1 ? 'macey' : (jx < burnStartX ? 'wood' : 'burn');
+        // halftone shade: slow noise so the letters have tone, like ink on paper
+        const n = .5 + .5 * Math.sin(jx * .021 + jy * .013) * Math.cos(jy * .027 - jx * .008);
+        const li = part === 'burn' ? (jx < bx[1] ? 0 : jx < bx[2] ? 1 : jx < bx[3] ? 2 : 3) : -1;
+        parts.push({
+          li, lcx: li >= 0 ? (bx[li] + bx[li + 1]) / 2 : 0, top: part === 'burn' && jy < base2 - fs * .64,
+          tx: jx, ty: jy, part, r0: cell * (.3 + .16 * n),
+          sx: rand(-.1, 1.1) * W, sy: rand(-.1, 1.1) * H,
+          delay: .15 + (jx / W) * .7 + Math.random() * .3, dur: rand(1, 1.5), seed: Math.random() * 6.28,
+          ox: 0, oy: 0, vx: 0, vy: 0, kick: rand(.8, 1.2)
+        });
+      }
+    }
+
+    topParts = parts.filter(p => p.top);
+    if (R3) {
+      camera.aspect = W / H; camera.updateProjectionMatrix();
+      rw = Math.ceil(W / cell) * 2; rh = Math.ceil(H / cell) * 2;
+      R3.setSize(rw, rh, false); buf = new Uint8Array(rw * rh * 4);
+      const gw = rw / 2, gh = rh / 2; jit = new Float32Array(gw * gh * 2);
+      for (let i = 0; i < gw * gh; i++) { jit[i * 2] = (hash(i, 1) - .5) * .5 * cell; jit[i * 2 + 1] = (hash(i, 7) - .5) * .5 * cell; }
+    }
+  }
+
+  // ===================== state =====================
+  let posX = 0, vel = 0, inputVel = 0, lastMoveT = -1e9, facing = 1, rotY = -.5, phase = 0, look = 'suit', take = 1;
+  let auto = 1, burnAt = null, interacted = false, keyDir = 0, mask = null, frameId = 0;
+  let drop = null, dropAt = -1e9, fire = 0, shriv = 0, flames = [], flameAcc = 0, trailAcc = 0, dust = [], dustAcc = 0;
+  // stop, drop & roll beats (seconds after the click): stop · hop · drop · 3 rolls · rise · ta-da
+  const D = { stop: .14, hop: .36, lie: .62, roll: 1.85, rise: 2.2, pose: 2.95 };
+  const makeDust = k => ({ x: posX + rand(-.35, .35) * figPx, y: groundY - rand(0, .03) * figPx, vx: rand(-1, 1) * fs * .7 * k, vy: -rand(.15, .6) * fs * k,
+    age: 0, life: rand(.45, .9), r0: cell * rand(.15, .38) });
+  function stopDropRoll() {
+    const nowS = last / 1000;
+    if (drop || posX < 0 || posX > W) return;
+    // roll toward the side with more room, and never past the edge
+    const edge = figPx * .3, room = d => d > 0 ? W - edge - posX : posX - edge;
+    let dir = facing; if (room(dir) < figPx * .7 && room(-dir) > room(dir)) dir = -dir;
+    const dist = clamp(room(dir), 0, figPx * 1.6);
+    drop = { t: nowS, x0: posX, dir, dist }; dropAt = nowS; auto = 0; interacted = true; inputVel = 0;
+  }
+  const pulses = [];
+  const walkSpeed = () => figPx * .9, runSpeed = () => figPx * 4.2;
+  function swapOutfit(edgeX) {
+    look = look === 'suit' ? 'pa' : 'suit'; take++;
+    lookEl.textContent = look === 'suit' ? 'Suit' : 'Set gear'; takeEl.textContent = String(take).padStart(2, '0');
+    pulses.push({ x: edgeX, y: groundY - figPx * .5, born: performance.now() / 1000 });
+    if (pulses.length > 4) pulses.shift();
+  }
+  function restart() {
+    t0 = performance.now(); posX = -figPx * .42; vel = 0; inputVel = 0; facing = 1; rotY = -.5; look = 'pa'; take = 1; auto = 1; burnAt = null;
+    lookEl.textContent = 'Set gear'; takeEl.textContent = '01'; // sprints through in set gear, comes back in the suit
+    if (reduce) { look = 'suit'; lookEl.textContent = 'Suit'; }
+    if (/[?&]still\b/.test(location.search)) { auto = 0; burnAt = -10; t0 -= 10000; posX = W * .5; look = 'suit'; lookEl.textContent = 'Suit'; } // preview helper
+    drop = null; dropAt = -1e9; fire = 0; shriv = 0; flames = []; dust = [];
+    for (const p of parts) { p.sx = rand(-.1, 1.1) * W; p.sy = rand(-.1, 1.1) * H; p.ox = p.oy = p.vx = p.vy = 0; }
+    if (reduce) { auto = 0; burnAt = -10; posX = W * .26; t0 -= 10000; }
+  }
+
+  // ===================== input: the cursor makes her run =====================
+  let lastPX = null, lastPT = 0, dragging = false;
+  function feed(x) {
+    const now = performance.now();
+    if (lastPX !== null && now - lastPT < 160) {
+      const v = (x - lastPX) / Math.max(6, now - lastPT) * 1000;
+      inputVel = inputVel * .35 + v * .65; lastMoveT = now;
+      if (Math.abs(v) > 20) { auto = 0; interacted = true; }
+    }
+    lastPX = x; lastPT = now;
+  }
+  cvs.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || dragging) feed(e.clientX); });
+  let downX = 0, downT = 0;
+  cvs.addEventListener('pointerdown', e => { dragging = true; lastPX = e.clientX; lastPT = performance.now(); downX = e.clientX; downT = performance.now(); });
+  addEventListener('pointerup', e => {
+    // a tap / click (not a drag) makes her stop, drop & roll
+    if (dragging && Math.abs(e.clientX - downX) < 8 && performance.now() - downT < 350) stopDropRoll();
+    dragging = false;
+  });
+  cvs.addEventListener('pointerleave', () => { lastPX = null; });
+  cvs.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { keyDir = e.key === 'ArrowRight' ? 1 : -1; auto = 0; interacted = true; e.preventDefault(); }
+    if (e.key === ' ' || e.key === 'ArrowDown') { stopDropRoll(); e.preventDefault(); }
+  });
+  cvs.addEventListener('keyup', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') keyDir = 0; });
+  document.getElementById('ms-replay').addEventListener('click', restart);
+
+  // ===================== frame =====================
+  const tmpV = R3 ? new THREE.Vector3() : null;
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    const t = (now - t0) / 1000, nowS = now / 1000;
+
+    // ---- movement ----
+    const margin = figPx * .45;
+    let target;
+    if (auto === 1) { // intro: she runs the full width once, in her suit
+      target = t > 1.2 ? runSpeed() * .62 : 0;
+    } else if (auto === 2) { // then jogs back in wearing set gear and stops
+      target = posX < W * .26 ? runSpeed() * .45 * smooth(W * .3, W * .05, posX) + walkSpeed() * .25 : 0;
+      if (posX >= W * .26 && Math.abs(vel) < 4) auto = 0;
+    } else {
+      if (now - lastMoveT > 70) inputVel *= Math.pow(.004, dt);
+      // small flicks → a walk, real swipes → a full sprint
+      target = keyDir ? keyDir * runSpeed() * .8 : Math.sign(inputVel) * Math.min(Math.abs(inputVel) * 2.4, runSpeed());
+    }
+    if (drop) {
+      const d = nowS - drop.t, k = d < D.lie ? 0 : d < D.roll ? easeInOut((d - D.lie) / (D.roll - D.lie)) : 1;
+      posX = drop.x0 + drop.dir * drop.dist * k; vel = 0;
+      // stipple dust kicked up when she hits the floor and while she rolls
+      if (d > D.lie - .08 && !drop.landed) { drop.landed = true; for (let i = 0; i < 70; i++) dust.push(makeDust(1.4)); }
+      if (d > D.lie && d < D.roll) { dustAcc += 160 * dt; while (dustAcc >= 1) { dustAcc--; dust.push(makeDust(1)); } }
+      if (d >= D.pose) drop = null;
+    } else {
+      vel += (target - vel) * Math.min(1, dt * (Math.abs(target) > Math.abs(vel) ? 9 : 7));
+      posX += vel * dt;
+    }
+    if (posX > W + margin) { posX = -margin; swapOutfit(0); if (auto === 1) auto = 2; if (burnAt === null) burnAt = t; }
+    else if (posX < -margin) { posX = W + margin; swapOutfit(W); }
+    if (burnAt === null && t > 4.5) burnAt = t; // reveal BURN even if the intro run was interrupted
+    if (Math.abs(vel) > 6) facing = Math.sign(vel);
+    const rotTarget = facing > 0 ? -.5 : -PI + .5;
+    rotY += (rotTarget - rotY) * Math.min(1, dt * 7);
+    const spd = Math.abs(vel), dist = spd * dt;
+    const kRun = smooth(.32, .7, spd / runSpeed()), kMove = smooth(walkSpeed() * .08, walkSpeed() * .6, spd);
+    phase += dist / lerp(figPx * .62, figPx * 1.15, kRun) * PI * 2;
+    hintEl.style.opacity = interacted ? 0 : (auto ? 0 : 1);
+
+    // ---- paper ----
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, W, H);
+    while (pulses.length && nowS - pulses[0].born > 2.2) pulses.shift();
+
+    // ---- floor: a faint dotted horizon + her stippled shadow ----
+    ctx.fillStyle = INK; ctx.globalAlpha = .28; ctx.beginPath();
+    for (let x = cell; x < W; x += cell * 2.4) { const r = cell * .13; ctx.moveTo(x + r, groundY); ctx.arc(x, groundY, r, 0, 6.2832); }
+    ctx.fill(); ctx.globalAlpha = 1;
+    const shW = figPx * (.24 + .1 * kRun + .12 * (drop ? 1 : 0)), shH = figPx * .045;
+    ctx.beginPath();
+    if (!DARK) for (let y = groundY - shH * 2; y < groundY + shH * 2; y += cell) for (let x = posX - shW * 2; x < posX + shW * 2; x += cell) {
+      const nx = (x - posX) / shW, ny = (y - groundY) / shH, g = Math.exp(-(nx * nx + ny * ny) * 1.4);
+      const r = cell * .46 * g; if (r < .35) continue;
+      ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+    }
+    ctx.fill();
+
+    // ---- Macey: render the 3D pose off-screen and turn it into a list of dots (drawn after the name) ----
+    const figDots = []; frameId++;
+    let gwM = 0, kLie = 0;
+    if (R3) {
+      const hv = 2 * 10 * Math.tan(15 * PI / 180), wv = hv * camera.aspect;
+      const figH = figPx / H * hv, wx = (posX / W - .5) * wv, wy = (.5 - groundY / H) * hv;
+      const suitOn = look === 'suit', stand = gait('stand', 0, suitOn);
+      let P = mixPose(mixPose(stand, gait('walk', phase, suitOn), kMove), gait('run', phase, suitOn), kRun), rollA = 0;
+      let hopY = 0;
+      if (drop) {
+        const d = nowS - drop.t, tuck = tuckPose();
+        const hopP = { lean: -.05, th: [.35, .2], kn: [.9, .7], ua: [2.2, 2.0], fa: [.3, .3] };
+        const tada = { lean: -.06, th: [.05, -.1], kn: [.05, .1], ua: [2.7, 2.5], fa: [.15, .25] };
+        if (d < D.stop) P = mixPose(P, stand, smooth(0, D.stop, d));
+        else if (d < D.hop) { const k = Math.sin(PI * (d - D.stop) / (D.hop - D.stop)); P = mixPose(stand, hopP, k); hopY = k * .13; }
+        else if (d < D.lie) { P = mixPose(stand, tuck, smooth(D.hop, D.lie - .05, d)); kLie = easeInOut(clamp((d - D.hop) / (D.lie - D.hop))); }
+        else if (d < D.roll) { P = tuck; kLie = 1; rollA = easeInOut((d - D.lie) / (D.roll - D.lie)) * PI * 6 * clamp(drop.dist / (figPx * 1.6), .34, 1); }
+        else if (d < D.rise) { P = mixPose(tuck, stand, smooth(D.roll, D.rise, d)); kLie = 1 - easeInOut(clamp((d - D.roll) / (D.rise - D.roll))); rollA = PI * 6; }
+        else P = mixPose(stand, tada, Math.sin(PI * clamp((d - D.rise) / (D.pose - D.rise))));
+      }
+      figs.suit.visible = suitOn; figs.pa.visible = !suitOn;
+      applyPose(figs[look], P, t, clamp(spd / runSpeed() * 1.4));
+      // standing: turn to face her direction. lying: her body points into the set, and she rolls across it
+      qStand.setFromEuler(eTmp.set(0, rotY, 0));
+      const dir = drop ? drop.dir : facing;
+      vD.set(-.3 * dir, 0, -.95).normalize(); qLie.setFromUnitVectors(UP, vD);
+      holder.quaternion.copy(qStand).slerp(qLie, kLie);
+      rollG.rotation.y = rollA * dir;
+      holder.position.set(wx - vD.x * .5 * figH * kLie, wy + .085 * figH * kLie + hopY * figH, -vD.z * .5 * figH * kLie);
+      holder.scale.setScalar(figH);
+      if (posX > -margin * 1.2 && posX < W + margin * 1.2) {
+        R3.render(scene, camera);
+        glc.readPixels(0, 0, rw, rh, glc.RGBA, glc.UNSIGNED_BYTE, buf);
+        const gw = rw / 2, gh = rh / 2; gwM = gw;
+        if (!mask || mask.length !== gw * gh) mask = new Int32Array(gw * gh);
+        const gx0 = Math.max(0, Math.floor((posX - figPx * .7) / cell)), gx1 = Math.min(gw, Math.ceil((posX + figPx * .7) / cell));
+        const gy0 = Math.max(0, Math.floor((groundY - figPx * 1.15) / cell)), gy1 = Math.min(gh, Math.ceil((groundY + figPx * .05) / cell));
+        for (let gy = gy0; gy < gy1; gy++) {
+          const r0 = rh - 1 - gy * 2, r1 = r0 - 1;
+          for (let gx = gx0; gx < gx1; gx++) {
+            const c0 = gx * 2, i0 = (r0 * rw + c0) * 4, i1 = i0 + 4, i2 = (r1 * rw + c0) * 4, i3 = i2 + 4;
+            const a = buf[i0 + 3] + buf[i1 + 3] + buf[i2 + 3] + buf[i3 + 3];
+            if (a < 200) continue;
+            mask[gy * gw + gx] = frameId;
+            const lum = (.299 * (buf[i0] + buf[i1] + buf[i2] + buf[i3]) + .587 * (buf[i0 + 1] + buf[i1 + 1] + buf[i2 + 1] + buf[i3 + 1]) + .114 * (buf[i0 + 2] + buf[i1 + 2] + buf[i2 + 2] + buf[i3 + 2])) / a;
+            // light theme: dark areas get big ink dots. dark theme: light areas get big light dots (inverse halftone)
+            const tone = DARK ? clamp(lum * 1.15) : clamp(1 - lum);
+            const r = cell * ((DARK ? .17 : .13) + .52 * Math.pow(tone, .85)) * Math.min(1, a / 900);
+            const j = (gy * gw + gx) * 2;
+            figDots.push(gx * cell + cell / 2 + jit[j], gy * cell + cell / 2 + jit[j + 1], r);
+          }
+        }
+      }
+    }
+    const masked = (x, y) => {
+      if (!gwM) return false;
+      const gx = Math.floor(x / cell), gy = Math.floor(y / cell);
+      for (let oy = -1; oy <= 1; oy++) for (let ox = -1; ox <= 1; ox++) {
+        const i = (gy + oy) * gwM + gx + ox;
+        if (i >= 0 && i < mask.length && mask[i] === frameId) return true;
+      }
+      return false;
+    };
+
+    // ---- the name, in dots; her body kicks them aside as she runs through ----
+    const burnK = burnAt === null ? 0 : clamp((t - burnAt) / 1.8);
+    const slide = woodOffset * (1 - easeInOut(clamp((t - (burnAt ?? 1e9)) / 1.4)));
+    const bodyCX = posX, bodyCY = groundY - figPx * .5 * (1 - kLie * .8), bodyRX = figPx * (.32 + .2 * kLie), bodyRY = figPx * (.56 - .3 * kLie);
+
+    // BURN's fire: lit once revealed; flares then dies as she rolls; letters shrivel, then unfurl and relight
+    const sinceDrop = nowS - dropAt;
+    let fT = burnK >= 1 ? .6 : 0, sT = 0, fRate = 1.6;
+    if (sinceDrop < 3.3) { fT = sinceDrop < .6 ? 1.35 : 0; sT = sinceDrop > .55 ? 1 : 0; fRate = sinceDrop < .6 ? 9 : 3; }
+    fire += (fT - fire) * Math.min(1, dt * fRate);
+    shriv += (sT - shriv) * Math.min(1, dt * (sT > shriv ? 3.4 : 1.3));
+    const energy = .35 + clamp(spd / runSpeed()) * 1.1;
+    ctx.beginPath();
+    for (const p of parts) {
+      let tx = p.tx, ty = p.ty, k, e;
+      if (p.part === 'wood') tx += slide;
+      if (p.part === 'burn' && (shriv > .002 || fire > .01)) {
+        // shrivel like burning paper: curl around the baseline, crumple, shrink; flicker upward while lit
+        const dx = tx - p.lcx, dy = ty - baseLine2, a = shriv * (p.li % 2 ? .5 : -.42), sc = 1 - .6 * shriv;
+        const ca = Math.cos(a), sa = Math.sin(a);
+        tx = p.lcx + (dx * ca - dy * sa) * sc + Math.sin(p.seed * 7 + t * 23) * cell * 1.4 * shriv;
+        ty = baseLine2 + (dx * sa + dy * ca) * sc * (1 - .25 * shriv) + Math.cos(p.seed * 5 + t * 19) * cell * shriv;
+        ty -= fire * cell * .8 * Math.abs(Math.sin(t * 11 + p.seed * 3));
+      }
+      if (p.part === 'burn') {
+        if (burnK <= 0) continue;
+        k = clamp((t - burnAt - (p.tx - burnStartX) / W * 1.2 - p.seed * .05) / 1.1);
+        if (k <= 0) continue;
+        e = easeOutExpo(k);
+        // rises off the floor like sparks becoming ink
+        p.sx = p.tx + Math.sin(p.seed * 3) * fs * .3; p.sy = groundY + fs * .2 * (p.seed / 6.28);
+      } else {
+        k = clamp((t - p.delay) / p.dur); if (k <= 0) continue; e = easeOutExpo(k);
+      }
+      // spring toward the body's wake
+      let fx = 0, fy = 0;
+      const dx = tx - bodyCX, nx = dx / bodyRX, ny = (ty - bodyCY) / bodyRY, d2 = nx * nx + ny * ny;
+      if (d2 < 1) { const f = (1 - d2) * (1 - d2) * energy * p.kick; fx = Math.sign(dx || 1) * f * cell * 7 + facing * f * cell * 3; fy = -f * cell * 4; }
+      for (const q of pulses) {
+        const age = nowS - q.born, rad = age * Math.max(W, H) * .55, w = 30 + age * 24;
+        const ddx = tx - q.x, ddy = ty - q.y, d = Math.hypot(ddx, ddy) || 1;
+        const g = Math.exp(-Math.pow((d - rad) / w, 2)) * (1 - age / 2.2);
+        fx += ddx / d * g * cell * 4; fy += ddy / d * g * cell * 4;
+      }
+      p.vx = (p.vx + (fx - p.ox) * .16) * .78; p.vy = (p.vy + (fy - p.oy) * .16) * .78;
+      p.ox += p.vx; p.oy += p.vy;
+      const arc = Math.sin(e * PI) * (1 - e);
+      const x = lerp(p.sx, tx, e) + p.ox * e + Math.cos(p.seed) * arc * fs * .6;
+      const y = lerp(p.sy, ty, e) + p.oy * e + Math.sin(p.seed) * arc * fs * .6;
+      const moved = Math.hypot(p.ox, p.oy);
+      if (p.top) { p.cx = x; p.cy = y; }
+      if (masked(x, y)) continue; // knock the name out behind her silhouette
+      const r = p.r0 * (.55 + .45 * e) / (1 + moved / (cell * 9)) * (p.part === 'burn' ? 1 - .45 * shriv : 1);
+      ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+    }
+    ctx.fill();
+
+    // ---- stipple flames: licking off BURN, and trailing off her when she sprints flat out ----
+    if (fire > .02 && burnK >= 1 && topParts.length) {
+      // flames come off in tongues: little clusters of dots that rise and sway together
+      flameAcc += 330 * fire * dt;
+      while (flameAcc >= 1) {
+        flameAcc--; const q = topParts[(Math.random() * topParts.length) | 0];
+        if (q.cx === undefined) continue;
+        const vx = rand(-.14, .14) * fs, vy = -rand(.5, 1.25) * fs * (.6 + fire * .8), life = rand(.5, 1.1) * (.7 + fire * .5), seed = Math.random() * 6.28;
+        for (let c = 0, n = 2 + (Math.random() * 3 | 0); c < n; c++)
+          flames.push({ x: q.cx + rand(-1, 1) * cell * 2, y: q.cy + rand(-1, 1) * cell, vx: vx * rand(.8, 1.2), vy: vy * rand(.85, 1.15), age: 0, life: life * rand(.8, 1.1), r0: cell * rand(.32, .7) * (.85 + fire * .5), seed: seed + c * .3 });
+      }
+    }
+    const sRun = clamp(spd / runSpeed());
+    if (!drop && sRun > .5 && posX > 0 && posX < W) {
+      trailAcc += 360 * (sRun - .5) / .5 * dt;
+      while (trailAcc >= 1) {
+        trailAcc--;
+        const low = Math.random() < .35; // some lick up from her feet
+        flames.push({ x: posX - facing * figPx * rand(.05, .32), y: groundY - figPx * (low ? rand(0, .08) : rand(.12, .95)), vx: -facing * fs * rand(.3, .9), vy: -rand(.35, .9) * fs, age: 0, life: rand(.35, .7), r0: cell * rand(.3, .6), seed: Math.random() * 6.28 });
+      }
+    }
+    if (flames.length > 3200) flames.splice(0, flames.length - 3200);
+    ctx.beginPath();
+    for (let i = flames.length - 1; i >= 0; i--) {
+      const f = flames[i]; f.age += dt;
+      if (f.age >= f.life) { flames.splice(i, 1); continue; }
+      f.vy -= fs * .7 * dt;
+      f.x += (f.vx + Math.sin(f.age * 11 + f.seed) * fs * .45 * (f.age / f.life + .3)) * dt; f.y += f.vy * dt;
+      if (masked(f.x, f.y)) continue;
+      const r = f.r0 * Math.pow(1 - f.age / f.life, .7);
+      ctx.moveTo(f.x + r, f.y); ctx.arc(f.x, f.y, r, 0, 6.2832);
+    }
+    for (let i = dust.length - 1; i >= 0; i--) {
+      const q = dust[i]; q.age += dt;
+      if (q.age >= q.life) { dust.splice(i, 1); continue; }
+      q.vy += fs * 1.6 * dt; q.vx *= 1 - 2 * dt; q.x += q.vx * dt; q.y = Math.min(groundY + cell, q.y + q.vy * dt);
+      const r = q.r0 * (1 - q.age / q.life);
+      ctx.moveTo(q.x + r, q.y); ctx.arc(q.x, q.y, r, 0, 6.2832);
+    }
+    ctx.fill();
+
+    // ---- Macey, in stipple ----
+    ctx.beginPath();
+    for (let i = 0; i < figDots.length; i += 3) { const x = figDots[i], y = figDots[i + 1], r = figDots[i + 2]; ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832); }
+    ctx.fill();
+
+    // ---- vignette + grain, like the ident ----
+    const vg = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * .35, W / 2, H / 2, Math.hypot(W, H) * .62);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, DARK ? 'rgba(0,0,0,.4)' : 'rgba(0,0,0,.07)');
+    ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+    if (grainPattern) {
+      ctx.save(); ctx.globalAlpha = DARK ? .045 : .07; ctx.globalCompositeOperation = DARK ? 'screen' : 'multiply';
+      const ox = reduce ? 0 : (Math.random() * 220) | 0, oy = reduce ? 0 : (Math.random() * 220) | 0;
+      ctx.translate(-ox, -oy); ctx.fillStyle = grainPattern; ctx.fillRect(0, 0, W + 220, H + 220); ctx.restore();
+    }
+
+    const f = Math.floor(Math.max(0, t) * 24), pad = n => String(n).padStart(2, '0');
+    tcEl.textContent = `00:${pad(Math.floor(f / 1440) % 60)}:${pad(Math.floor(f / 24) % 60)}:${pad(f % 24)}`;
+  }
+
+  // paper grain
+  const grain = document.createElement('canvas'); grain.width = grain.height = 220;
+  { const g = grain.getContext('2d'), id = g.createImageData(220, 220); for (let i = 0; i < id.data.length; i += 4) { const v = Math.random() * 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; } g.putImageData(id, 0, 0); }
+  let grainPattern = null;
+
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layout(); grainPattern = ctx.createPattern(grain, 'repeat'); }, 120); });
+  Promise.race([Promise.all([document.fonts.load('400 100px Anton'), document.fonts.load('500 11px "IBM Plex Mono"')]), new Promise(r => setTimeout(r, 2500))])
+    .then(() => { layout(); grainPattern = ctx.createPattern(grain, 'repeat'); let started = false; const go = () => { if (started) return; started = true; restart(); last = performance.now(); requestAnimationFrame(frame); }; if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { go(); io.disconnect(); } }, { threshold: .35 }); io.observe(hero); } else go(); });
+})();
+</script>
+</body>
+</html>

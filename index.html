@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Macey Woodburn: producer, camera and editor. Netflix, NBCUniversal/Peacock, Disney and commercial credits. Founder of FILMAVATION Studios.">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Macey Woodburn</title>
+</head>
+<body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a pinned "set" where the camera crosses a studio cyc wall, then a dark screening room, then a contact sheet of work */
+:root{
+  --cyc:#E6E4DE; --cyc-2:#D9D6CE; --ink:#151513; --ink-2:#57544D; --line:#C4C0B6;
+  --tungsten:#A85A17; --tally:#D2342A;
+  --room:#0E0E0D; --room-ink:#ECEAE3; --room-2:#9C988E; --room-line:#2C2B28;
+  --display:"Big Shoulders Display","Oswald","Arial Narrow",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --cyc:#151513; --cyc-2:#1E1D1A; --ink:#ECEAE3; --ink-2:#A39F95; --line:#34322E;
+  --tungsten:#E08A3C; --tally:#FF4A3D; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --cyc:#151513; --cyc-2:#1E1D1A; --ink:#ECEAE3; --ink-2:#A39F95; --line:#34322E;
+  --tungsten:#E08A3C; --tally:#FF4A3D; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cyc);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--cyc)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* header */
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;pointer-events:none}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.brand{font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:.06em;text-decoration:none;pointer-events:auto}
+.top nav{display:flex;gap:22px;pointer-events:auto}
+.top nav a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.top nav a:hover{color:var(--ink)}
+
+/* the set */
+.stage{position:relative;height:430vh;background:
+  radial-gradient(120% 80% at 50% 38%, var(--cyc) 0%, var(--cyc) 45%, var(--cyc-2) 100%)}
+.set{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fade{position:absolute;inset:0;background:var(--room);opacity:0;pointer-events:none}
+
+/* viewfinder HUD */
+.hud{position:absolute;inset:calc(64px + env(safe-area-inset-top,0px)) calc(var(--gut-r) + 4px) calc(18px + env(safe-area-inset-bottom,0px)) calc(var(--gut-l) + 4px);pointer-events:none;color:var(--ink-2)}
+.hud .c{position:absolute;width:22px;height:22px;border-color:var(--ink-2);border-style:solid;opacity:.55}
+.hud .tl{top:0;left:0;border-width:1.5px 0 0 1.5px}.hud .tr{top:0;right:0;border-width:1.5px 1.5px 0 0}
+.hud .bl{bottom:0;left:0;border-width:0 0 1.5px 1.5px}.hud .br{bottom:0;right:0;border-width:0 1.5px 1.5px 0}
+.hud .row{position:absolute;left:30px;right:30px;display:flex;justify-content:space-between;gap:12px}
+.hud .row.t{top:4px}.hud .row.b{bottom:4px}
+.rec{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.rec i{width:9px;height:9px;border-radius:50%;background:var(--tally);opacity:.35;transition:opacity .2s}
+.rec.on i{opacity:1}
+.tc{font-variant-numeric:tabular-nums;color:var(--ink)}
+
+/* overlay copy on the set */
+.cap{position:absolute;max-width:min(520px,86vw);will-change:opacity,transform}
+.cap h1{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.005em;font-size:clamp(64px,13vw,188px);margin:0;text-wrap:balance}
+.cap h2{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.92;font-size:clamp(34px,5.2vw,68px);margin:0 0 14px;text-wrap:balance}
+.cap p{margin:0;color:var(--ink-2);max-width:42ch}
+.cap .kick{color:var(--tungsten);margin-bottom:14px;display:block}
+.c1{left:var(--gut-l);bottom:calc(56px + env(safe-area-inset-bottom,0px));padding-left:6px;max-width:min(900px,92vw)}
+.c1 .roles{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--ink)}
+.c2{right:var(--gut-r);top:26%;padding-right:6px;text-align:right}
+.c2 p{margin-left:auto}
+.c3{left:var(--gut-l);top:24%;padding-left:6px}
+.credits{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:0}
+.credits li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.credits li span:last-child{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);align-self:center}
+.c4{left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom,0px));text-align:center;max-width:none}
+.c4 h2{color:var(--room-ink)}
+.c4 .mono{color:var(--room-2)}
+.hint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);color:var(--ink-2)}
+
+/* screening room */
+.room{background:var(--room);color:var(--room-ink)}
+.room .wrap{padding-block:72px 96px}
+.eyebrow{display:block;color:var(--tungsten);margin-bottom:16px}
+.room .eyebrow{color:#E08A3C}
+.reel{position:relative;aspect-ratio:16/9;max-width:100%;border:1px solid var(--room-line);background:
+  radial-gradient(70% 70% at 50% 50%, #1b1a18 0%, #0e0e0d 100%);display:grid;place-items:center;text-align:center}
+.reel .c{position:absolute;width:26px;height:26px;border:solid #6b675f;opacity:.8}
+.reel .tl{top:14px;left:14px;border-width:1.5px 0 0 1.5px}.reel .tr{top:14px;right:14px;border-width:1.5px 1.5px 0 0}
+.reel .bl{bottom:14px;left:14px;border-width:0 0 1.5px 1.5px}.reel .br{bottom:14px;right:14px;border-width:0 1.5px 1.5px 0}
+.reel .cross{position:absolute;width:18px;height:18px}
+.reel .cross::before,.reel .cross::after{content:"";position:absolute;background:#6b675f}
+.reel .cross::before{left:8px;top:0;width:1.5px;height:18px}.reel .cross::after{top:8px;left:0;height:1.5px;width:18px}
+.reel strong{display:block;font-family:var(--display);font-size:clamp(28px,4vw,52px);text-transform:uppercase;letter-spacing:.01em;margin-bottom:6px}
+.reel .mono{color:var(--room-2)}
+.reel .meta{position:absolute;left:48px;right:48px;bottom:18px;display:flex;justify-content:space-between;color:var(--room-2)}
+.creditline{margin-top:4px;font-size:clamp(17px,2vw,22px);display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--room-2)}
+.creditline b{color:var(--room-ink);font-weight:500}
+
+.studio{background:#070708;color:#f2f2ef;border-top:1px solid #2a2a2b;border-bottom:1px solid #2a2a2b}
+.studio .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:center;padding-block:44px}
+.studio-logo{text-decoration:none;display:inline-flex;flex-direction:column;gap:4px}
+.studio-logo img{display:block;width:min(340px,80vw);height:auto;filter:invert(1) contrast(1.8);mix-blend-mode:screen}
+.wm{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(44px,6vw,80px);line-height:.85;color:var(--room-ink)}
+.wm i{font-style:normal;color:#7FD3FF}
+.wm-sub{color:var(--room-2);letter-spacing:.42em}
+.studio-copy p{margin:0 0 12px;color:#9a9a96;max-width:56ch}
+.studio-link{text-decoration:none;color:#f2f2ef;border-bottom:1px solid #f2f2ef;padding-bottom:2px}
+.studio-link:hover{text-decoration:underline}
+@media (max-width:760px){.studio .wrap{grid-template-columns:minmax(0,1fr);gap:18px}}
+/* work */
+.work .wrap{padding-block:88px}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;margin-bottom:28px}
+.sechead h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.88;margin:0}
+.sechead p{margin:0;color:var(--ink-2);max-width:44ch;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.tile{grid-column:span 4;text-decoration:none;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tile.wide{grid-column:span 8}
+.plate{position:relative;aspect-ratio:16/10;max-width:100%;overflow:hidden;background:var(--p1)}
+.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.plate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .25s}
+.tile.playing .plate video{opacity:1}
+.plate.trivid video{position:relative;inset:auto;opacity:1;width:100%;height:100%;object-fit:cover}
+.tile.feature{grid-column:span 12}
+.plate.tri{aspect-ratio:21/9;}
+.tile.wide .plate.tri{aspect-ratio:16/10}
+.plate.tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:#0d0d0c}
+.plate.tri img{position:relative;inset:auto;transition:opacity .35s}
+.plate.tri img.swap{opacity:0}
+@media (max-width:820px){ .plate.tri{aspect-ratio:4/3} }
+.plate::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top, rgba(0,0,0,.62) 0%, rgba(0,0,0,.12) 45%, rgba(0,0,0,0) 70%)}
+.plate::after{content:"";position:absolute;inset:0;z-index:1;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.plate span{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3.2vw,44px);line-height:.9;color:#F3F1EA;text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.plate em{position:absolute;right:12px;top:10px;z-index:2;font-style:normal;color:#F3F1EA;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.tile .info{display:flex;justify-content:space-between;gap:12px;color:var(--ink-2)}
+.tile:hover .plate span{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.tile .plate{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .plate{transform:scale(.985)}
+
+.now{border-top:1px solid var(--line)}
+.now .wrap{padding-block:80px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:start}
+.now h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(36px,5vw,68px);line-height:.9;margin:0 0 14px;text-wrap:balance}
+.now-meta{color:var(--ink-2);margin:0 0 20px}
+.now-head p:not(.now-meta){margin:0;max-width:58ch}
+.now-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.now-steps li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}
+.now-steps li span{color:var(--tungsten);padding-top:3px}
+@media (max-width:820px){.now .wrap{grid-template-columns:minmax(0,1fr);gap:28px}}
+/* about */
+.about{border-top:1px solid var(--line)}
+.about .wrap{padding-block:88px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.about figure{margin:0}
+.about img{display:block;width:auto;max-width:100%;height:auto;max-height:78vh;margin:0 auto}
+.about figcaption{margin-top:10px;color:var(--ink-2);display:flex;justify-content:space-between}
+.about h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,5.4vw,76px);line-height:.9;margin:0 0 24px;text-wrap:balance}
+.about .copy p{margin:0 0 16px;max-width:62ch}
+.facts{margin:32px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0;border-top:1px solid var(--line)}
+.facts dt,.facts dd{padding:12px 0;border-bottom:1px solid var(--line);margin:0}
+.facts dt{padding-right:28px;color:var(--ink-2)}
+
+/* contact */
+.contact{background:var(--room);color:var(--room-ink)}
+.contact .wrap{padding-block:88px 40px}
+.contact h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,9vw,132px);line-height:.86;margin:0 0 20px;text-wrap:balance}
+.contact p{color:var(--room-2);max-width:52ch;margin:0 0 32px}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:36px}
+.mail code{font-family:var(--mono);font-size:clamp(16px,2.4vw,26px);user-select:all;color:var(--room-ink)}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--room-ink);border:1px solid #4a4843;padding:10px 14px;cursor:pointer}
+.btn:hover{border-color:var(--room-ink)}
+.links{display:flex;flex-wrap:wrap;gap:12px 28px;padding-bottom:56px;border-bottom:1px solid var(--room-line)}
+.links a{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--room-ink)}
+.links a:hover{color:#E08A3C}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:20px;color:var(--room-2)}
+
+/* fallbacks */
+.no-gl .stage{height:auto}
+.no-gl .set{position:relative;height:auto;padding:120px 0 60px}
+.no-gl .cap{position:relative;inset:auto;margin:0 var(--gut-r) 40px var(--gut-l);opacity:1!important;transform:none!important;text-align:left}
+.no-gl .c2 p{margin-left:0}.no-gl .c4,.no-gl .hud,.no-gl #gl,.no-gl .hint{display:none}
+
+@media (max-width:820px){
+  .top nav{gap:14px}
+  .c2{top:auto;bottom:calc(60px + env(safe-area-inset-bottom,0px));right:var(--gut-r);text-align:left;left:var(--gut-l)}
+  .c2 p{margin-left:0}
+  .c3{top:auto;bottom:calc(52px + env(safe-area-inset-bottom,0px))}
+  .credits li{font-size:14px;padding:7px 0}
+  .tile,.tile.wide{grid-column:span 12}
+  .about .wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+  .hud .row.t span:last-child{display:none}
+}
+.brand,.top nav a{white-space:nowrap}
+.top{background:color-mix(in srgb, var(--cyc) 84%, transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.top .wrap{padding-block:12px}
+@media (max-width:640px){ .brand{font-size:16px} .top nav{gap:12px} .top nav a[href="#reel"],.top nav a[href="#about"],.top nav a[href="#work"]{display:none} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .tile .plate{transition:none} }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">MACEY WOODBURN</a>
+    <nav aria-label="Sections"><a href="creative-producing.html">Producing</a><a href="camera-department.html">Camera dept</a><a href="filmavation.html">Studio</a><a href="#reel">Credits</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="stage" id="stage" aria-label="Introduction">
+    <div class="set">
+      <canvas id="gl" aria-hidden="true"></canvas>
+
+      <div class="hud" aria-hidden="true">
+        <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+        <div class="row t mono"><span class="rec" id="rec"><i></i>REC</span><span>4K &middot; 23.976 &middot; 180&deg; &middot; ISO 800</span></div>
+        <div class="row b mono"><span class="tc" id="tc">TC 00:00:00:00</span><span>A-cam &middot; FX3</span></div>
+      </div>
+
+      <div class="cap c1" data-range="0,0,.16,.22">
+        <span class="kick mono">Producer &middot; Camera &middot; Edit</span>
+        <h1>Macey<br>Woodburn</h1>
+        <div class="roles mono"><span>Netflix &middot; UNTOLD S3</span><span>NBCUniversal &middot; Peacock</span><span>Disney Parks</span></div>
+      </div>
+
+      <div class="cap c2" data-range=".2,.26,.42,.48">
+        <span class="kick mono">Since 2022</span>
+        <h2>We&rsquo;ve just hit 200 paid projects!</h2>
+        <p>I started FILMAVATION Studios in Orlando and kept saying yes: festivals, game days, brand spots, and eventually network sets.</p>
+      </div>
+
+      <div class="cap c3" data-range=".46,.52,.7,.76">
+        <span class="kick mono">On set</span>
+        <h2>Credits</h2>
+        <ul class="credits">
+          <li><span>UNTOLD, Season 3 &middot; Netflix</span><span>Camera PA</span></li>
+          <li><span>Peacock &middot; NBCUniversal</span><span>In-house production</span></li>
+          <li><span>Disneyland 70th Anniversary</span><span>DP's assistant &middot; DIT</span></li>
+          <li><span>Rolling Loud LA</span><span>Operator &middot; Photo</span></li>
+          <li><span>Pink Ahead campaign</span><span>LED-wall production</span></li>
+        </ul>
+      </div>
+
+      <div class="cap c4" data-range=".86,.92,1.1,1.2">
+        <h2>Roll camera</h2>
+        <span class="mono">Keep scrolling for the work</span>
+      </div>
+
+      <div class="fade" id="fade"></div>
+    </div>
+  </section>
+
+  <section class="room" id="reel" aria-labelledby="reel-h">
+    <div class="wrap">
+      <span class="eyebrow mono" id="reel-h">Worked with</span>
+      <div class="creditline">
+        <span><b>Netflix</b> UNTOLD S3</span><span><b>NBCUniversal</b> Peacock</span><span><b>Disney</b> Parks &amp; Advertising</span><span><b>Rolling Loud</b> LA</span><span><b>Orlando Magic</b></span><span><b>Morgan &amp; Morgan</b></span><span><b>818 Tequila</b> &times; Kendall Jenner</span>
+      </div>
+      <span class="eyebrow mono" style="display:block;margin-top:28px">Work featured in</span>
+      <div class="creditline">
+        <span><b>The New York Times</b></span><span><a href="https://www.washingtonpost.com/lifestyle/2022/04/04/florida-teen-stonewall-riots-history-lesson/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><b>The Washington Post</b></a></span><span><b>Teen Vogue</b></span><span><b>CNN</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio" aria-labelledby="studio-h">
+    <div class="wrap">
+      <a class="studio-logo" href="filmavation.html" aria-label="FILMAVATION Studios">
+        <img id="studio-h" src="thumbs/filmavation-wordmark.jpg" alt="FILMAVATION Studios" width="980" height="270">
+      </a>
+      <div class="studio-copy">
+        <p>Most of this work was produced through FILMAVATION Studios, the studio I founded in Orlando in 2022: film plus innovation, from LED-wall virtual production to cinema glass on every job.</p>
+        <a class="studio-link mono" href="filmavation.html">What is FILMAVATION &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sechead">
+        <h2 id="work-h">Selected work</h2>
+        <p>Newest first. Hover to roll a clip; click to open the full piece.</p>
+      </div>
+      <div class="grid">
+        <a class="tile" href="https://www.instagram.com/maceywdbrn/reel/DfDG_M0S5Hm/" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#1d2418"><img src="thumbs/ig-irts.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/ig-irts.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">New York</em><span>Learned to Fly</span></div>
+          <div class="info mono"><span>IRTS fellows &middot; Super 8 look</span><span>Oct 2026</span></div>
+        </a>
+        <a class="tile" href="https://www.instagram.com/maceywdbrn/reel/DeKHODgxb2w/" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#2a2118"><img src="thumbs/ig-touristing.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/ig-touristing.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">New York</em><span>Touristing</span></div>
+          <div class="info mono"><span>Personal &middot; film look</span><span>Oct 2026</span></div>
+        </a>
+        <a class="tile" href="https://www.instagram.com/maceywoodburnmedia/reel/DZl6LhbuNi6/" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#2a1414"><img src="thumbs/ig-clocks.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/ig-clocks.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">New York</em><span>Around the Clock</span></div>
+          <div class="info mono"><span>Personal &middot; loop</span><span>Jun 2026</span></div>
+        </a>
+        <a class="tile feature" href="https://www.instagram.com/p/DYFGONHjiok/" target="_blank" rel="noopener">
+          <div class="plate tri" data-set="2,1,6,4,9,3,7,5,8">
+            <img src="thumbs/petty-2.jpg" alt="Overhead shot of the band lying on patterned rugs with their instruments" loading="lazy" decoding="async">
+            <img src="thumbs/petty-1.jpg" alt="Instant-film contact sheet of the band" loading="lazy" decoding="async">
+            <img src="thumbs/petty-6.jpg" alt="Motion-blurred performer mid-move" loading="lazy" decoding="async">
+            <em class="mono">Band campaign</em><span>Petty Theft</span>
+          </div>
+          <div class="info mono"><span>Creative concept &middot; film + digital production</span><span>May 2026</span></div>
+        </a>
+        <a class="tile wide" href="https://www.instagram.com/maceywoodburnmedia/reel/DJh96bMsZX_/" target="_blank" rel="noopener">
+          <div class="plate"><img src="thumbs/mwm-mm.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/mwm-mm.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">Client</em><span>Morgan &amp; Morgan</span></div>
+          <div class="info mono"><span>Operator + producer</span><span>2025</span></div>
+        </a>
+        <a class="tile" href="https://www.instagram.com/maceywoodburnmedia/p/DYiE4QBFNp3/" target="_blank" rel="noopener">
+          <div class="plate"><img src="thumbs/mwm-alexa.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/mwm-alexa.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">Behind the camera</em><span>ALEXA Mini &times; Atlas Orion</span></div>
+          <div class="info mono"><span>50mm anamorphic</span><span>2026</span></div>
+        </a>
+        <a class="tile" href="https://www.instagram.com/maceywoodburnmedia/reel/DFdjJqGPiRp/" target="_blank" rel="noopener">
+          <div class="plate"><img src="thumbs/mwm-sabor.jpg" alt="" loading="lazy" decoding="async"><video data-src="thumbs/mwm-sabor.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><em class="mono">Client</em><span>Sabor Latino</span></div>
+          <div class="info mono"><span>Performance</span><span>2025</span></div>
+        </a>
+        <a class="tile wide" href="https://www.instagram.com/maceywoodburnmedia/" target="_blank" rel="noopener">
+          <div class="plate tri trivid">
+            <video poster="thumbs/mwm-gators.jpg" data-src="thumbs/mwm-gators.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <video poster="thumbs/mwm-mediaday.jpg" data-src="thumbs/mwm-mediaday.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <video poster="thumbs/mwm-capones.jpg" data-src="thumbs/mwm-capones.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <em class="mono">Gainesville</em><span>Game Day to Late Night</span>
+          </div>
+          <div class="info mono"><span>Gators softball &middot; Media Day &middot; Capone&rsquo;s</span><span>2023&ndash;24</span></div>
+        </a>
+        <a class="tile wide" href="https://maceywoodburn.myportfolio.com/rolling-loud-la-2025" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#170d2b;--p2:#c2275e;--fx:70%;--fy:25%"><img src="thumbs/rolling-loud.jpg" data-gif="thumbs/rolling-loud.gif" alt="" loading="lazy" decoding="async"><em class="mono">Los Angeles</em><span>Rolling Loud LA</span></div>
+          <div class="info mono"><span>Operator &middot; Photographer</span><span>2025</span></div>
+        </a>
+        <a class="tile" href="https://maceywoodburn.myportfolio.com/morgan-morgan" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#07142a;--p2:#1f6fd1;--fx:30%;--fy:70%"><img src="thumbs/orlando-magic.jpg" data-gif="thumbs/orlando-magic.gif" alt="" loading="lazy" decoding="async"><em class="mono">Orlando</em><span>Orlando Magic</span></div>
+          <div class="info mono"><span>Camera PA</span><span>2022</span></div>
+        </a>
+        <a class="tile" href="https://maceywoodburn.myportfolio.com/strike-magazine-gnv" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#1a1916;--p2:#bdb5a2;--fx:65%;--fy:35%"><img src="thumbs/strike.jpg" data-gif="thumbs/strike.gif" alt="" loading="lazy" decoding="async"><em class="mono">Gainesville</em><span>Strike Magazine</span></div>
+          <div class="info mono"><span>Film production team</span><span>2024&ndash;26</span></div>
+        </a>
+        <a class="tile" href="https://maceywoodburn.myportfolio.com/macy" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#1d0f06;--p2:#d77a22;--fx:40%;--fy:30%"><img src="thumbs/malcolm-todd.jpg" data-gif="thumbs/malcolm-todd.gif" alt="" loading="lazy" decoding="async"><em class="mono">Live</em><span>Malcolm Todd</span></div>
+          <div class="info mono"><span>Concert</span><span>2025</span></div>
+        </a>
+        <a class="tile" href="https://maceywoodburn.myportfolio.com/florida-gators" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#0a1f4a;--p2:#e86a1c;--fx:75%;--fy:60%"><img src="thumbs/florida-gators.jpg" data-gif="thumbs/florida-gators.gif" alt="" loading="lazy" decoding="async"><em class="mono">Gainesville</em><span>Florida Gators</span></div>
+          <div class="info mono"><span>Sports</span><span>2024</span></div>
+        </a>
+        <a class="tile" href="https://maceywoodburn.myportfolio.com/the-right-kind-of-love" target="_blank" rel="noopener">
+          <div class="plate" style="--p1:#2a1216;--p2:#e7a7a0;--fx:35%;--fy:40%"><img src="thumbs/right-kind-of-love.jpg" alt="" loading="lazy" decoding="async"><em class="mono">Short</em><span>The Right Kind of Love</span></div>
+          <div class="info mono"><span>Film</span><span>2025</span></div>
+        </a>
+        <a class="tile wide" href="https://maceywoodburn.myportfolio.com/its-murph" target="_blank" rel="noopener">
+          <div class="plate tri" data-prefix="thumbs/nl-" data-set="3,7,8,4,2,6">
+            <img src="thumbs/nl-3.jpg" alt="Partygoer drinking under pink club light" loading="lazy" decoding="async">
+            <img src="thumbs/nl-7.jpg" alt="Packed crowd at a night out" loading="lazy" decoding="async">
+            <img src="thumbs/nl-8.jpg" alt="Friends dancing at an outdoor party" loading="lazy" decoding="async">
+            <em class="mono">After dark</em><span>Night Life</span>
+          </div>
+          <div class="info mono"><span>Nightlife</span><span>2025</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="now" id="now" aria-labelledby="now-h">
+    <div class="wrap">
+      <div class="now-head">
+        <span class="eyebrow mono">Currently &middot; next dive into the deep end</span>
+        <h2 id="now-h">Amazon Operational Strategy &amp; People Analytics Externship</h2>
+        <p class="now-meta mono">Extern &middot; Data analytics &amp; visualization &middot; Dec 2026 &ndash; Feb 2027 &middot; 8 weeks</p>
+        <p>Starting in December, I&rsquo;m stepping outside the camera department to work on a people analytics problem: using employee voice data to understand an operational challenge and recommend a fix. It&rsquo;s the same instinct I use on set, finding what slows a team down, applied to data.</p>
+      </div>
+      <ol class="now-steps">
+        <li><span class="mono">01</span>Understand the operational challenge</li>
+        <li><span class="mono">02</span>Explore and clean employee voice data</li>
+        <li><span class="mono">03</span>Find sentiment and keyword patterns</li>
+        <li><span class="mono">04</span>Uncover themes and root causes</li>
+        <li><span class="mono">05</span>Segment the workforce and set priorities</li>
+        <li><span class="mono">06</span>Recommend a pilot-ready intervention</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <figure>
+        <img src="headshot.jpg" alt="Macey Woodburn in a grey blazer, kneeling beside a vintage television on a white studio backdrop" width="1200" height="1800" loading="lazy">
+        <figcaption class="mono"><span>Gainesville, FL</span><span>UF &rsquo;27</span></figcaption>
+      </figure>
+      <div class="copy">
+        <span class="eyebrow mono">About</span>
+        <h2 id="about-h">Thrown into the deep end</h2>
+        <p>One of my favorite sayings is to throw yourself into the deep end, and that&rsquo;s exactly how I started: learning production at an underwater camera rental house, prepping housings and cinema cameras for shoots where every seal and setting has to be right before the gear goes in the water.</p>
+        <p>That same hands-on approach runs through FILMAVATION Studios, which I started in 2022. Since then we&rsquo;ve just hit 200 paid projects, produced, shot and edited for clients like Morgan &amp; Morgan, the Orlando Magic and Rolling Loud, with work featured in The New York Times, The Washington Post, Teen Vogue and CNN.</p>
+        <p>On bigger sets, I've been a camera PA on Netflix's UNTOLD, built camera packages for Disneyland's 70th anniversary, and spent summer 2026 on Peacock projects at NBCUniversal in New York. My favorite part of production is the part most people never see: the gear prep, the schedule juggling and the workflow that keeps the shoot day calm.</p>
+        <p>Off set, it's film photography, live music and more stand-up than I'll admit.</p>
+        <dl class="facts">
+          <dt class="mono">School</dt><dd>University of Florida, B.S. Media Production, Management &amp; Technology, minor in Innovation (AI). May 2027.</dd>
+          <dt class="mono">Studio</dt><dd>FILMAVATION Studios, since 2022</dd>
+          <dt class="mono">Camera</dt><dd>ARRI, RED and Sony cinema systems; Cooke optics; Teradek, gimbals, EasyRig</dd>
+          <dt class="mono">Post</dt><dd>Adobe Creative Suite, DaVinci Resolve, Final Cut Pro, Frame.io</dd>
+          <dt class="mono">Fellowship</dt><dd>IRTS Foundation Summer Fellow, 2026. Selected from 3,000 applicants.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <span class="eyebrow mono" style="color:#E08A3C">Contact</span>
+      <h2 id="contact-h">Contact me</h2>
+      <p>Freelance producing and camera work now. Full-time production roles from May 2027.</p>
+      <div class="mail">
+        <code id="email">maceywoodburn@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.instagram.com/maceywoodburnmedia/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/maceywoodburn" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://extern.com/portfolios/macey-woodburn" target="_blank" rel="noopener">Extern</a>
+        <a href="https://maceywoodburn.myportfolio.com/" target="_blank" rel="noopener">Adobe Portfolio</a>
+      </div>
+      <div class="foot mono"><span>&copy; 2026 Macey Woodburn</span><span>Gainesville, FL &middot; New York, NY</span></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  // copy email
+  var copyBtn=document.getElementById('copy');
+  copyBtn.addEventListener('click',function(){
+    var t=document.getElementById('email').textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Selected';}
+    try{navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copied';},sel);}catch(e){sel();}
+    setTimeout(function(){copyBtn.textContent='Copy email';},2200);
+  });
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // work tiles: still by default, the animated clip plays on hover (loaded only when hovered)
+  if(matchMedia('(hover: hover)').matches && !reduce){
+    [].forEach.call(document.querySelectorAll('.plate img[data-gif]'),function(img){
+      var tile=img.closest('.tile'), still=img.getAttribute('src');
+      function on(){img.src=img.dataset.gif;} function off(){img.src=still;}
+      tile.addEventListener('mouseenter',on); tile.addEventListener('mouseleave',off);
+      tile.addEventListener('focus',on); tile.addEventListener('blur',off);
+    });
+    // contact-sheet tile: hover rotates every frame through the three panels
+    [].forEach.call(document.querySelectorAll('.plate.tri[data-set]'),function(pl){
+      var pre=pl.dataset.prefix||'thumbs/petty-', set=pl.dataset.set.split(','), imgs=pl.querySelectorAll('img'), tile=pl.closest('.tile'), step=0, timer=null, orig=[].map.call(imgs,function(i){return i.getAttribute('src');});
+      set.forEach(function(n){var p=new Image();p.src=pre+n+'.jpg';});
+      function swap(){ step++; [].forEach.call(imgs,function(img,k){ var n=set[(step*3+k)%set.length]; setTimeout(function(){img.classList.add('swap'); setTimeout(function(){img.src=pre+n+'.jpg'; img.classList.remove('swap');},180);},k*140); }); }
+      tile.addEventListener('mouseenter',function(){ if(!timer){swap(); timer=setInterval(swap,1100);} });
+      tile.addEventListener('mouseleave',function(){ clearInterval(timer); timer=null; step=0; [].forEach.call(imgs,function(img,k){img.src=orig[k];}); });
+    });
+    [].forEach.call(document.querySelectorAll('.plate.trivid'),function(pl){
+      var vs=pl.querySelectorAll('video'), tile=pl.closest('.tile');
+      tile.addEventListener('mouseenter',function(){[].forEach.call(vs,function(v){if(!v.getAttribute('src'))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){});});});
+      tile.addEventListener('mouseleave',function(){[].forEach.call(vs,function(v){v.pause();});});
+    });
+    [].forEach.call(document.querySelectorAll('.plate video[data-src]'),function(v){
+      var tile=v.closest('.tile'); if(v.closest('.trivid'))return;
+      function on(){ if(!v.getAttribute('src'))v.src=v.dataset.src; var p=v.play(); if(p&&p.catch)p.catch(function(){}); tile.classList.add('playing'); }
+      function off(){ v.pause(); tile.classList.remove('playing'); }
+      tile.addEventListener('mouseenter',on); tile.addEventListener('mouseleave',off);
+      tile.addEventListener('focus',on); tile.addEventListener('blur',off);
+    });
+  }
+  var stage=document.getElementById('stage'), canvas=document.getElementById('gl');
+  var caps=[].slice.call(document.querySelectorAll('.cap[data-range]')).map(function(el){return {el:el,r:el.dataset.range.split(',').map(Number)};});
+  var tcEl=document.getElementById('tc'), recEl=document.getElementById('rec'), fadeEl=document.getElementById('fade');
+
+  var gl=null; try{ gl=window.THREE && canvas.getContext('webgl2')||canvas.getContext('webgl'); }catch(e){}
+  if(!window.THREE||!gl){ document.documentElement.classList.add('no-gl'); return; }
+
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,context:gl,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, innerWidth<700?1.5:2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.15;
+  var scene=new THREE.Scene();
+  var cam=new THREE.PerspectiveCamera(30,1,.1,60);
+  cam.position.set(0,.35,6.2); cam.lookAt(0,0,0);
+
+  scene.add(new THREE.HemisphereLight(0xffffff,0x2a2622,.6));
+  var key=new THREE.DirectionalLight(0xfff1e2,1.7); key.position.set(-3,4,5); scene.add(key);
+  var rim=new THREE.DirectionalLight(0xffae62,1.6); rim.position.set(4,2.5,-4); scene.add(rim);
+  var fill=new THREE.DirectionalLight(0xbcd0ff,.5); fill.position.set(3,-1,4); scene.add(fill);
+  var top=new THREE.DirectionalLight(0xffffff,.6); top.position.set(0,6,0); scene.add(top);
+
+  function std(o){return new THREE.MeshStandardMaterial(o);}
+  var M={
+    body:std({color:0x1d1d1f,roughness:.6,metalness:.35}),
+    rubber:std({color:0x121213,roughness:.92,metalness:.05}),
+    metal:std({color:0xbdbdbd,roughness:.25,metalness:1}),
+    dark:std({color:0x0c0c0d,roughness:.42,metalness:.55}),
+    glass:std({color:0x04060c,roughness:.03,metalness:1}),
+    coat:std({color:0x2f2266,roughness:.08,metalness:.85,emissive:0x140b30,emissiveIntensity:.7}),
+    tally:std({color:0xff3b2f,emissive:0xff2a1a,emissiveIntensity:2.4}),
+    screen:std({color:0x0e1418,roughness:.12,metalness:.3,emissive:0x1b2731,emissiveIntensity:.6}),
+    white:std({color:0xe7e3da,roughness:.5,metalness:0}),
+    hood:std({color:0x0c0c0d,roughness:.5,metalness:.4,side:THREE.DoubleSide})
+  };
+  Object.keys(M).forEach(function(k){M[k].color.convertSRGBToLinear(); if(M[k].emissive)M[k].emissive.convertSRGBToLinear();});
+
+  function rbox(w,h,d,r,mat){
+    var s=new THREE.Shape(),x=-w/2,y=-h/2;
+    s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);
+    s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);
+    s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);
+    var b=Math.min(r*.4,.025), dd=Math.max(d-2*b,.001);
+    var g=new THREE.ExtrudeGeometry(s,{depth:dd,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:3,curveSegments:10});
+    g.translate(0,0,-dd/2);
+    return new THREE.Mesh(g,mat);
+  }
+  function cyl(r,len,mat,r2,seg,open){var g=new THREE.CylinderGeometry(r2==null?r:r2,r,len,seg||64,1,!!open);g.rotateX(Math.PI/2);return new THREE.Mesh(g,mat);}
+  function box(w,h,d,mat){return new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);}
+
+  // ----- stand-in cinema camera (FX3-style: compact cube body, no viewfinder, top handle with XLR unit) -----
+  var rig=new THREE.Group(); scene.add(rig);
+  var C=new THREE.Group(); C.position.z=-.28; rig.add(C);
+  function add(m,x,y,z){m.position.set(x,y,z);C.add(m);return m;}
+
+  add(rbox(1.28,.80,.78,.09,M.body),0,0,0);                 // body
+  add(rbox(.34,.84,.30,.12,M.rubber),-.53,-.02,.43);         // grip
+  add(rbox(.30,.5,.06,.06,M.rubber),.5,-.1,-.4).visible=true; // rear thumb pad
+  add(cyl(.37,.04,M.dark),.11,-.03,.40);                     // mount plate
+  add(cyl(.315,.05,M.metal),.11,-.03,.44);                   // mount ring
+
+  var L=new THREE.Group(); L.position.set(.11,-.03,.46); C.add(L);
+  function seg(r,len,mat,z,r2,open){var m=cyl(r,len,mat,r2,64,open);m.position.z=z+len/2;L.add(m);return m;}
+  seg(.285,.10,M.dark,0);
+  var focus=new THREE.Group(); focus.position.z=.21; L.add(focus);
+  var fr=cyl(.298,.22,M.rubber); focus.add(fr);
+  for(var i=0;i<56;i++){var a=i/56*Math.PI*2;var rb=box(.02,.014,.2,M.rubber);rb.position.set(Math.cos(a)*.302,Math.sin(a)*.302,0);rb.rotation.z=a;focus.add(rb);}
+  seg(.29,.08,M.dark,.32);
+  var zoom=new THREE.Group(); zoom.position.z=.48; L.add(zoom);
+  zoom.add(cyl(.305,.16,M.rubber));
+  for(var j=0;j<40;j++){var b2=j/40*Math.PI*2;var zr=box(.018,.02,.14,M.dark);zr.position.set(Math.cos(b2)*.31,Math.sin(b2)*.31,0);zr.rotation.z=b2;zoom.add(zr);}
+  seg(.302,.025,M.white,.56);                                // index band
+  seg(.33,.13,M.hood,.585,.35,true);                         // flared hood, open so the glass shows
+  var gl1=new THREE.Mesh(new THREE.CircleGeometry(.29,64),M.glass); gl1.position.z=.64; L.add(gl1);
+  var gl2=new THREE.Mesh(new THREE.RingGeometry(.07,.21,64),M.coat); gl2.position.z=.641; L.add(gl2);
+  var gl3=new THREE.Mesh(new THREE.CircleGeometry(.07,48),M.glass); gl3.position.z=.642; L.add(gl3);
+  var dot=new THREE.Mesh(new THREE.SphereGeometry(.014,12,12),M.white); dot.position.set(0,.29,.06); L.add(dot);
+
+  add(rbox(.96,.09,.16,.04,M.body),0,.66,-.03);              // handle bar
+  add(box(.11,.22,.14,M.body),-.39,.51,-.03);                // handle posts
+  add(box(.11,.22,.14,M.body),.39,.51,-.03);
+  add(rbox(.44,.2,.26,.05,M.body),.18,.62,.24);              // XLR unit
+  [.07,.29].forEach(function(x){add(cyl(.058,.04,M.dark),x,.62,.38);add(cyl(.036,.046,M.metal),x,.62,.385);});
+  add(box(.07,.03,.02,M.tally),.55,.33,.41);                 // tally lamp
+  var recb=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,.03,24),M.tally); add(recb,-.5,.425,.18);
+  add(new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.05,32),M.dark),-.29,.43,-.17); // dial
+  for(var v=0;v<9;v++){add(box(.012,.01,.5,M.dark),-.2+v*.045,.405,-.16);}            // top vents
+  for(var rr=0;rr<4;rr++)for(var cc=0;cc<3;cc++){add(box(.01,.035,.13,M.dark),.655,.2-rr*.12,-.2+cc*.16);} // side vents
+  for(var rl=0;rl<4;rl++)for(var cl=0;cl<3;cl++){add(box(.01,.035,.13,M.dark),-.655,.2-rl*.12,-.2+cl*.16);}
+  add(box(.86,.52,.03,M.screen),.08,.02,-.41);               // rear LCD
+
+  // soft floor shadow
+  var sc=document.createElement('canvas'); sc.width=sc.height=128;
+  var sx=sc.getContext('2d'); var grd=sx.createRadialGradient(64,64,4,64,64,62);
+  grd.addColorStop(0,'rgba(0,0,0,.55)'); grd.addColorStop(1,'rgba(0,0,0,0)'); sx.fillStyle=grd; sx.fillRect(0,0,128,128);
+  var shadow=new THREE.Mesh(new THREE.PlaneGeometry(2.8,1.5),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc),transparent:true,depthWrite:false}));
+  shadow.rotation.x=-Math.PI/2; scene.add(shadow);
+
+  // ----- scroll choreography -----
+  var TAU=Math.PI*2;
+  var K=[
+    {p:0,   x:1.25, y:-.06,z:0,   rx:.2,  ry:-.55, rz:.04},
+    {p:.22, x:-1.3, y:.1,  z:.15, rx:.06, ry:-1.95,rz:-.06},
+    {p:.47, x:1.15, y:.04, z:.35, rx:-.14,ry:-3.45,rz:.05},
+    {p:.72, x:.95,  y:-.02,z:.5,  rx:.16, ry:-4.95,rz:-.03},
+    {p:.88, x:0,    y:-.02,z:1.5, rx:.03, ry:-6.12,rz:0},
+    {p:1,   x:0,    y:-.03,z:4.45,rx:0,   ry:-TAU, rz:0}
+  ];
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function pose(p){
+    var i=0; while(i<K.length-2&&p>K[i+1].p)i++;
+    var a=K[i],b=K[i+1],t=ease(Math.min(1,Math.max(0,(p-a.p)/(b.p-a.p)))),o={};
+    ['x','y','z','rx','ry','rz'].forEach(function(k){o[k]=a[k]+(b[k]-a[k])*t;}); return o;
+  }
+
+  var W=1,H=1,aspect=1,fx=1,sc0=1;
+  function resize(){
+    W=canvas.clientWidth; H=canvas.clientHeight; aspect=W/H;
+    renderer.setSize(W,H,false); cam.aspect=aspect; cam.updateProjectionMatrix();
+    fx=Math.max(.32,Math.min(1,aspect/1.55)); sc0=aspect<.8?.78:1;
+  }
+  addEventListener('resize',resize); resize();
+
+  function progress(){
+    var r=stage.getBoundingClientRect(), span=r.height-innerHeight;
+    return span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+  }
+  function sm(a,b,x){var t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t);}
+
+  var cur=progress(), last=-1, lastScrollT=0, running=true, t0=performance.now();
+  addEventListener('scroll',function(){lastScrollT=performance.now();},{passive:true});
+  new IntersectionObserver(function(es){running=es[0].isIntersecting; if(running)requestAnimationFrame(tick);}).observe(stage);
+
+  function tick(now){
+    if(!running)return;
+    var target=progress();
+    cur = reduce ? target : cur+(target-cur)*.09;
+    var t=(now-t0)/1000, o=pose(cur), idle=reduce?0:1;
+    // narrow screens: smaller sideways travel, use height instead
+    var px=o.x*fx, py=o.y+(aspect<.8?(o.x>0?.55:-.25)*Math.min(1,Math.abs(o.x)):0)*(1-sm(.8,.95,cur));
+    rig.position.set(px, py+Math.sin(t*1.1)*.02*idle, o.z);
+    rig.rotation.set(o.rx+Math.sin(t*.7)*.015*idle, o.ry+Math.sin(t*.45)*.04*idle*(1-cur), o.rz);
+    rig.scale.setScalar(sc0+(1-sc0)*sm(.8,1,cur));
+    focus.rotation.z=cur*5.5; zoom.rotation.z=-cur*3.2;
+    shadow.position.set(px,-.62,o.z-.05); shadow.material.opacity=.9*(1-sm(.78,.92,cur));
+    renderer.render(scene,cam);
+
+    if(Math.abs(cur-last)>.0004){
+      caps.forEach(function(c){var r=c.r,op=c.r[0]===0&&c.r[1]===0?1-sm(r[2],r[3],cur):sm(r[0],r[1],cur)*(1-sm(r[2],r[3],cur));
+        c.el.style.opacity=op.toFixed(3); c.el.style.transform='translateY('+((1-op)*14).toFixed(1)+'px)'; c.el.style.visibility=op<.01?'hidden':'visible';});
+      fadeEl.style.opacity=sm(.9,1,cur).toFixed(3);
+      var f=Math.round(cur*24*24), s=Math.floor(f/24);
+      tcEl.textContent='TC 00:00:'+String(s).padStart(2,'0')+':'+String(f%24).padStart(2,'0');
+      last=cur;
+    }
+    recEl.classList.toggle('on', now-lastScrollT<350 || (Math.floor(t*1.6)%2===0 && cur<.02));
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
