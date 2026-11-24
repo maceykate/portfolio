@@ -104,6 +104,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
 .reel .meta{position:absolute;left:48px;right:48px;bottom:18px;display:flex;justify-content:space-between;color:var(--room-2)}
 .creditline{margin-top:4px;font-size:clamp(17px,2vw,22px);display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--room-2)}
 .creditline b{color:var(--room-ink);font-weight:500}
+.agency{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 24px;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid color-mix(in srgb,var(--room-ink) 16%,transparent)}
+.agency h3{margin:0;font-size:clamp(30px,5.4vw,60px);line-height:1;font-weight:600;letter-spacing:-.01em;color:var(--room-ink)}
+.agency .mono{color:var(--room-2)}
 
 .studio{background:#070708;color:#f2f2ef;border-top:1px solid #2a2a2b;border-bottom:1px solid #2a2a2b}
 .studio .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:center;padding-block:44px}
@@ -256,6 +259,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--tungsten);outline-o
 
   <section class="room" id="reel" aria-labelledby="reel-h">
     <div class="wrap">
+      <span class="eyebrow mono">Represented by</span>
+      <div class="agency"><h3>Disney Generation Stream</h3><span class="mono">Agency</span></div>
       <span class="eyebrow mono" id="reel-h">Worked with</span>
       <div class="creditline">
         <span><b>Netflix</b> UNTOLD S3</span><span><b>NBCUniversal</b> Peacock</span><span><b>Disney</b> Parks &amp; Advertising</span><span><b>Rolling Loud</b> LA</span><span><b>Orlando Magic</b></span><span><b>Morgan &amp; Morgan</b></span><span><b>818 Tequila</b> &times; Kendall Jenner</span>
